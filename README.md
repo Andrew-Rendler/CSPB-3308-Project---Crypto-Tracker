@@ -9,7 +9,8 @@ Andrew Rendler
 Vision statement: 
 
 Motivation: Our motivation behind the Crypto Tracker was to provide users with a tool to monitor the past performance
-and leading indicators for a select set of cryptocurrency, including basic visualizations.
+and leading indicators for a select set of cryptocurrency, including basic visualizations. Cryptocurrencies are very new
+markets and we saw an opportunity to help consumers consolidate information for ease of use.
 
 Risks to project completion:
 
