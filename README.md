@@ -6,7 +6,7 @@ Trent Resh
 Ben Kupernik
 Andrew Rendler
 
-Vision statement: 
+Vision statement: Provide an elegant and customizable dashboard optimized for viewing real-time price action of leading cryptocurrencies to empower our users to make informed trading decisions.
 
 Motivation: Our motivation behind the Crypto Tracker was to provide users with a tool to monitor the past performance
 and leading indicators for a select set of cryptocurrency, including basic visualizations. Cryptocurrencies are very new
