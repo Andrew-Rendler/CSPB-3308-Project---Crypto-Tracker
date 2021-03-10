@@ -9,17 +9,19 @@ def index():
     strl = ""
     newline = "<br/>"
     price = CryptoPriceData.CryptoPriceData()
-    price.getData('BTC','USD',0,2)
-    strl+="Percent Change Today: "
-    strl+=percentChange(price.priceList[0],price.priceList[1])+newline
-    strl+="Change in Dollars Today: "
-    strl+=dollarChange(price.priceList[0],price.priceList[1])+newline
-    #will need volume data to display current or avg volume
-    #hardcoded current # of 'coins' to get market cap
-    strl+="Market Capitalization: "
-    strl+=getMarketCap(18649443.75, price.priceList[0])+newline         
-    return strl
-    
+    # price.api_call()
+    response = price.get_daily("BTC", "USD", 30).json()["Response"]
+    # price.getData('BTC','USD',0,2)
+    # strl+="Percent Change Today: "
+    # strl+=percentChange(price.priceList[0],price.priceList[1])+newline
+    # strl+="Change in Dollars Today: "
+    # strl+=dollarChange(price.priceList[0],price.priceList[1])+newline
+    # #will need volume data to display current or avg volume
+    # #hardcoded current # of 'coins' to get market cap
+    # strl+="Market Capitalization: "
+    # strl+=getMarketCap(18649443.75, price.priceList[0])+newline
+    return response
+
 def percentChange(currentPrice, prevPrice):
     return "{:0.2f}%".format((float(currentPrice)
                               -float(prevPrice))/float(prevPrice)*100)
@@ -51,4 +53,3 @@ def getMarketCap(shares, currentPrice):
     if shares*currentPrice >= 1000000000:
         return "{:0.3f}B".format(shares*currentPrice/1000000000)
     return "{:0.3f}M".format(shares*currentPrice/1000000)
-
