@@ -1,4 +1,5 @@
 import math
+import CryptoPriceData
 from markupsafe import escape
 from flask import Flask
 app = Flask(__name__)
@@ -7,23 +8,16 @@ app = Flask(__name__)
 def index():
     strl = ""
     newline = "<br/>"
-    with open("cryptoAPI.txt") as infile:
-        lines = infile.readlines()
-        for x in lines:
-            if x.split()[0] == "Price":
-                price = x.split()[1]
-                strl+="Percent Change Today: "
-                strl+=((percentChange(x.split()[1],x.split()[2])))+newline
-                strl+="Change in Dollars Today: "
-                strl+=((dollarChange(float(x.split()[1]),float(x.split()[2]))))+newline
-            elif x.split()[0] == "Volume":
-                strl+=" Average Volume: "
-                strl+=((averageVolume(x.split()[1:len(x.split())])))+newline
-            elif x.split()[0] == "Shares":
-                shares = x.split()[1]
+    price = CryptoPriceData.CryptoPriceData()
+    price.getData('BTC','USD',0,2)
+    strl+="Percent Change Today: "
+    strl+=percentChange(price.priceList[0],price.priceList[1])+newline
+    strl+="Change in Dollars Today: "
+    strl+=dollarChange(price.priceList[0],price.priceList[1])+newline
+    #will need volume data to display current or avg volume
+    #hardcoded current # of 'coins' to get market cap
     strl+="Market Capitalization: "
-    strl+=getMarketCap(int(shares),float(price))
-            
+    strl+=getMarketCap(18649443.75, price.priceList[0])+newline         
     return strl
     
 def percentChange(currentPrice, prevPrice):
@@ -40,13 +34,8 @@ def dollarChange(currentPrice, prevPrice):
     change = math.ceil((currentPrice*100) - (prevPrice*100))
     if change <= 0:
         dec = math.ceil((int((-1*change)/10))%10*10 + -1*change % 10)
-        print("-")
-        print(dec)
     else:
        dec = math.ceil((int((change)/10))%10*10 + change % 10)
-       print("+")
-       print(dec)
-       print(change)
     if dec <= 9:
         dec = ("0"+str(int(dec)))
         if change >= 0:
@@ -58,7 +47,8 @@ def dollarChange(currentPrice, prevPrice):
 
 def getMarketCap(shares, currentPrice):
     if shares*currentPrice >= 1000000000000:
-        return "{:0.2f}T".format(shares*currentPrice/1000000000000)
+        return "{:0.3f}T".format(shares*currentPrice/1000000000000)
     if shares*currentPrice >= 1000000000:
-        return "{:0.2f}B".format(shares*currentPrice/1000000000)
-    return "{:0.2f}M".format(shares*currentPrice/1000000)
+        return "{:0.3f}B".format(shares*currentPrice/1000000000)
+    return "{:0.3f}M".format(shares*currentPrice/1000000)
+
