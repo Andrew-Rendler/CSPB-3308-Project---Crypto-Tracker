@@ -1,3 +1,4 @@
+from typing import Union
 from flask import Flask, render_template, abort, jsonify
 from requests import get, Response
 
@@ -49,7 +50,9 @@ class CryptoCompareAPI(object):
             description=description.format(endpoint, token),
         )
 
-    def __dfs_dict(self, tokens: list, dictionary: dict, idx: int) -> (str, int):
+    def __dfs_dict(
+        self, tokens: list, dictionary: dict, idx: int
+    ) -> (Union[str, int], int):
         """
         Depth first search for the endpoint in endpoints dict. This will only work if the
         tokens are not malformed.
