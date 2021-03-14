@@ -77,7 +77,9 @@ class CryptoCompareAPI(object):
     """
 
     def api_call(self, endpoint: str, kwargs: dict) -> Response:
-        """"""
+        """
+        Takes in the endpoint string and kwargs if any. Returns a Response from the api
+        """
         url = self.__url_builder(endpoint, **kwargs)
         res = get(url)
         return res
