@@ -35,7 +35,11 @@ class CryptoCompareAPI(object):
     def __init__(self):
         pass
 
-    def _dfs_dict(self, tokens: list, dictionary: dict) -> str:
+    """
+    Private Methods
+    """
+
+    def __dfs_dict(self, tokens: list, dictionary: dict) -> str:
         """
         Depth first search for the endpoint in endpoints dict. This will only work if the
         tokens are not malformed.
@@ -47,20 +51,33 @@ class CryptoCompareAPI(object):
         for key, value in dictionary.items():
             if key == tokens[0]:
                 del tokens[0]
-                return self._dfs_dict(tokens, value)
+                return self.__dfs_dict(tokens, value)
 
-    def _clean_endpoints_string(self, endpoint: str) -> str:
+    def __clean_endpoints_string(self, endpoint: str) -> str:
+        """
+        Takes the endpoint string and tokenizes it.
+        Returns the bottom level endpoint url found
+        """
         tokens = endpoint.split("+")
-        return self._dfs_dict(tokens, CRYPTOCOMPARE_ENDPOINTS)
+        return self.__dfs_dict(tokens, CRYPTOCOMPARE_ENDPOINTS)
 
-    def _url_builder(self, endpoint: str, **kwargs: dict) -> str:
-        endpoint = self._clean_endpoints_string(endpoint)
+    def __url_builder(self, endpoint: str, **kwargs: dict) -> str:
+        """
+        Builds the url given the endpoint and key word arguments.
+        Returns the endpoint url filled with the kwargs if kwargs are passed
+        """
+        endpoint = self.__clean_endpoints_string(endpoint)
         if kwargs != {}:
             endpoint = endpoint.format(**kwargs)
         endpoint += "&api_key={}".format(API_KEY)
         return endpoint
 
-    def _api_call(self, endpoint: str, kwargs: dict) -> Response:
-        url = self._url_builder(endpoint, **kwargs)
+    """
+    Public Methods
+    """
+
+    def api_call(self, endpoint: str, kwargs: dict) -> Response:
+        """"""
+        url = self.__url_builder(endpoint, **kwargs)
         res = get(url)
         return res

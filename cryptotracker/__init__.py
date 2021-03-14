@@ -39,7 +39,7 @@ def create_app(test_config=None):
         #   - single argument: expr_1
         #   - multi argument: expr_1+expr_2
         # pass an empty dict if there are no endpoint args
-        res = cryptocompare_api._api_call("ratelimit+all", {})
+        res = cryptocompare_api.api_call("ratelimit+all", {})
 
         # pass a dict with endpoint args
         # kwargs = {"coin": "BTC", "currency": "USD", "num_entries": "30"}
