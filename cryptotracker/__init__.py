@@ -43,7 +43,7 @@ def create_app(test_config=None):
 
         # pass a dict with endpoint args
         # kwargs = {"coin": "BTC", "currency": "USD", "num_entries": "30"}
-        # res = cryptocompare_api._api_call("historical_daily", kwargs)
+        # res = cryptocompare_api._api_call("historical+daily", kwargs)
         return res.json()
 
     return app
