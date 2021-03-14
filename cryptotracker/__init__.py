@@ -35,8 +35,15 @@ def create_app(test_config=None):
 
     @app.route("/")
     def index():
-        kwargs = {"coin": "BTC", "currency": "USD", "num_days": "30"}
-        res = cryptocompare_api._api_call("historical_daily", kwargs).json()["Response"]
-        return res
+        # examples of api calls. A string must be passed with following format
+        #   - single argument: expr_1
+        #   - multi argument: expr_1+expr_2
+        # pass an empty dict if there are no endpoint args
+        res = cryptocompare_api._api_call("ratelimit+all", {})
+
+        # pass a dict with endpoint args
+        # kwargs = {"coin": "BTC", "currency": "USD", "num_entries": "30"}
+        # res = cryptocompare_api._api_call("historical_daily", kwargs)
+        return res.json()
 
     return app
