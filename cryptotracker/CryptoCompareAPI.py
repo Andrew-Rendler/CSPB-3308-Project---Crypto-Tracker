@@ -40,23 +40,35 @@ class CryptoCompareAPI(object):
     Private Methods
     """
 
-    def __dfs_dict(self, tokens: list, dictionary: dict) -> str:
+    def __abort_api_call(self, description, endpoint, token):
+        """
+        Return an abort is the passed endpoint string is malformed
+        """
+        return abort(
+            400,
+            description=description.format(endpoint, token),
+        )
+
+    def __dfs_dict(self, tokens: list, dictionary: dict, idx: int) -> (str, int):
         """
         Depth first search for the endpoint in endpoints dict. This will only work if the
         tokens are not malformed.
 
         Returns the endpoint string if found.
         """
-        idx = 0
+
+        try:
+            dictionary[tokens[0]]
+        except KeyError:
+            return 400, idx - 1
+
         if len(tokens) == 1:
-            return dictionary[tokens[0]]
+            return dictionary[tokens[0]], idx
+
         for key, value in dictionary.items():
             if key == tokens[0]:
                 del tokens[0]
-                return self.__dfs_dict(tokens, value)
-            else:
-                return 400, idx
-        idx += 1
+                return self.__dfs_dict(tokens, value, len(tokens)), idx
 
     def __clean_endpoints_string(self, endpoint: str) -> str:
         """
@@ -64,13 +76,18 @@ class CryptoCompareAPI(object):
         Returns the bottom level endpoint url found
         """
         tokens = endpoint.split("+")
-        result, idx = self.__dfs_dict(tokens, CRYPTOCOMPARE_ENDPOINTS)
+        result, idx = self.__dfs_dict(tokens, CRYPTOCOMPARE_ENDPOINTS, len(tokens))
         if result == 400:
-            abort(
-                400,
-                description="Malformed String: {} -> {}".format(endpoint, tokens[idx]),
+            self.__abort_api_call(
+                "Malformed String: {} -> {}", endpoint, tokens[idx - 1]
             )
-        return result
+
+        try:
+            return result[0]
+        except KeyError:
+            self.__abort_api_call(
+                "Malformed String: {} -> {}", endpoint, tokens[idx - 1]
+            )
 
     def __url_builder(self, endpoint: str, **kwargs: dict) -> str:
         """
