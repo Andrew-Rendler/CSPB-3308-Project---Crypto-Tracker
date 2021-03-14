@@ -40,9 +40,9 @@ class CryptoCompareAPI(object):
     Private Methods
     """
 
-    def __abort_api_call(self, description, endpoint, token):
+    def __abort_malformed_string(self, description, endpoint, token):
         """
-        Return an abort is the passed endpoint string is malformed
+        Return an abort if the passed endpoint string is malformed
         """
         return abort(
             400,
@@ -75,17 +75,18 @@ class CryptoCompareAPI(object):
         Takes the endpoint string and tokenizes it.
         Returns the bottom level endpoint url found
         """
+
         tokens = endpoint.split("+")
         result, idx = self.__dfs_dict(tokens, CRYPTOCOMPARE_ENDPOINTS, len(tokens))
         if result == 400:
-            self.__abort_api_call(
+            self.__abort_malformed_string(
                 "Malformed String: {} -> {}", endpoint, tokens[idx - 1]
             )
 
         try:
             return result[0]
         except KeyError:
-            self.__abort_api_call(
+            self.__abort_malformed_string(
                 "Malformed String: {} -> {}", endpoint, tokens[idx - 1]
             )
 
@@ -94,6 +95,7 @@ class CryptoCompareAPI(object):
         Builds the url given the endpoint and key word arguments.
         Returns the endpoint url filled with the kwargs if kwargs are passed
         """
+
         endpoint = self.__clean_endpoints_string(endpoint)
         if kwargs != {}:
             endpoint = endpoint.format(**kwargs)
@@ -108,6 +110,7 @@ class CryptoCompareAPI(object):
         """
         Takes in the endpoint string and kwargs if any. Returns a Response from the api
         """
+
         url = self.__url_builder(endpoint, **kwargs)
         res = get(url)
         return res
