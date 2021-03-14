@@ -1,3 +1,4 @@
+from flask import Flask, render_template, abort, jsonify
 from requests import get, Response
 
 API_KEY = "15bbc2af04315d0d116d7a99909e23d0a026a0ebf729cb0033d82295b3748d6f"
@@ -46,12 +47,16 @@ class CryptoCompareAPI(object):
 
         Returns the endpoint string if found.
         """
+        idx = 0
         if len(tokens) == 1:
             return dictionary[tokens[0]]
         for key, value in dictionary.items():
             if key == tokens[0]:
                 del tokens[0]
                 return self.__dfs_dict(tokens, value)
+            else:
+                return 400, idx
+        idx += 1
 
     def __clean_endpoints_string(self, endpoint: str) -> str:
         """
@@ -59,7 +64,13 @@ class CryptoCompareAPI(object):
         Returns the bottom level endpoint url found
         """
         tokens = endpoint.split("+")
-        return self.__dfs_dict(tokens, CRYPTOCOMPARE_ENDPOINTS)
+        result, idx = self.__dfs_dict(tokens, CRYPTOCOMPARE_ENDPOINTS)
+        if result == 400:
+            abort(
+                400,
+                description="Malformed String: {} -> {}".format(endpoint, tokens[idx]),
+            )
+        return result
 
     def __url_builder(self, endpoint: str, **kwargs: dict) -> str:
         """

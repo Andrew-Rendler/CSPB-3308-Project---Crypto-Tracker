@@ -1,10 +1,13 @@
 import os
-
-# TODO: Figure out the module imports
-from .CryptoCompareAPI import CryptoCompareAPI
 from flask import Flask
 
+# TODO: Figure out the custom module imports
+from .CryptoCompareAPI import CryptoCompareAPI
+from .ErrorHandler import ErrorHandler
+
+# app context objects
 cryptocompare_api = CryptoCompareAPI()
+error_handler = ErrorHandler()
 
 
 def create_app(test_config=None):
@@ -39,7 +42,7 @@ def create_app(test_config=None):
         #   - single argument: expr_1
         #   - multi argument: expr_1+expr_2
         # pass an empty dict if there are no endpoint args
-        res = cryptocompare_api.api_call("ratelimit+all", {})
+        res = cryptocompare_api.api_call("ratelimikt+all", {})
 
         # pass a dict with endpoint args
         # kwargs = {"coin": "BTC", "currency": "USD", "num_entries": "30"}
