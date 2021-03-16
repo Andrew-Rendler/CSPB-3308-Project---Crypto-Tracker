@@ -1,10 +1,12 @@
 import os
 
 # TODO: Figure out the module imports
+from .CryptoData import CryptoData
 from .CryptoCompareAPI import CryptoCompareAPI
 from flask import Flask
 
 cryptocompare_api = CryptoCompareAPI()
+cryptodata = CryptoData()
 
 
 def create_app(test_config=None):
@@ -38,5 +40,20 @@ def create_app(test_config=None):
         kwargs = {"coin": "BTC", "currency": "USD", "num_days": "30"}
         res = cryptocompare_api._api_call("historical_daily", kwargs).json()["Response"]
         return res
+
+    # testing -- page displays BTC data from API call
+    @app.route("/data")
+    def data():
+        kwargs = {"coin": "BTC", "currency": "USD", "num_days": "30"}
+        cryptodata.apiCall(kwargs)
+        output = ""
+        newl = "<br/>"
+        output+="Percent Change Today: "
+        output+=cryptodata.percentChange()+newl
+        output+="Change in Dollars Today: "
+        output+=cryptodata.dollarChange()+newl
+        output+="Average Volume: "
+        output+=cryptodata.averageVolume()+newl
+        return output
 
     return app
