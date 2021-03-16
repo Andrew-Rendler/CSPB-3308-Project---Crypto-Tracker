@@ -1,4 +1,4 @@
-from typing import Union
+from typing import Union, Any
 from flask import Flask, render_template, abort, jsonify
 from requests import get, Response
 
@@ -41,7 +41,9 @@ class CryptoCompareAPI(object):
     Private Methods
     """
 
-    def __abort_malformed_string(self, description, endpoint, token):
+    def __abort_malformed_string(
+        self, description: str, endpoint: str, token: str
+    ) -> Any:
         """
         Return an abort if the passed endpoint string is malformed
         """
