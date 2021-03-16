@@ -61,7 +61,6 @@ class CryptoCompareAPI(object):
 
         Returns the endpoint string if found.
         """
-
         try:
             dictionary[tokens[0]]
         except KeyError:
@@ -70,10 +69,9 @@ class CryptoCompareAPI(object):
         if len(tokens) == 1:
             return dictionary[tokens[0]], idx
 
-        for key, value in dictionary.items():
-            if key == tokens[0]:
-                del tokens[0]
-                return self.__dfs_dict(tokens, value, len(tokens)), idx
+        val = dictionary[tokens[0]]
+        del tokens[0]
+        return self.__dfs_dict(tokens, val, len(tokens)), idx
 
     def __clean_endpoints_string(self, endpoint: str) -> str:
         """
