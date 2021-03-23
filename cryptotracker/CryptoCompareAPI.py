@@ -102,6 +102,8 @@ class CryptoCompareAPI(object):
         endpoint = self.__clean_endpoints_string(endpoint)
         if kwargs != {}:
             endpoint = endpoint.format(**kwargs)
+        else:
+            endpoint = endpoint[0]
         endpoint += "&api_key={}".format(API_KEY)
         return endpoint
 
