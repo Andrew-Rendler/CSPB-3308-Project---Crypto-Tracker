@@ -1,13 +1,15 @@
 import os
-from flask import Flask
+from flask import Flask, render_template
 
 # TODO: Figure out the custom module imports
 from .CryptoCompareAPI import CryptoCompareAPI
 from .ErrorHandler import ErrorHandler
+from .CryptoData import CryptoData
 
 # app context objects
 cryptocompare_api = CryptoCompareAPI()
 error_handler = ErrorHandler()
+cryptodata = CryptoData()
 
 
 def create_app(test_config=None):
@@ -48,5 +50,14 @@ def create_app(test_config=None):
         # kwargs = {"coin": "BTC", "currency": "USD", "num_entries": "30"}
         # res = cryptocompare_api.api_call("historical+daily", kwargs)
         return res.json()
+
+    # testing -- rendering html and displaying BTC data from API call
+    @app.route("/test")
+    def test():
+        kwargs = {"coin": "BTC", "currency": "USD", "num_entries": "30"}
+        cryptodata.apiCall("historical+daily", kwargs)
+        dic = {}
+        dic = cryptodata.getDic()
+        return render_template("data.html", info=dic)
 
     return app
