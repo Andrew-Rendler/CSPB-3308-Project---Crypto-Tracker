@@ -1,5 +1,5 @@
 /*The container*/
-.Menu {
+.menu {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -11,14 +11,14 @@
 }
 
 /*There are 3 items in my menus so this defines the width and display*/
-.Menu-Item
+.menu-item
 {
   float: left;
   width: 33.3%;
 }
 
 /*This sets the color and text properties for the items on the menu*/
-.Menu-Item a
+.menu-item a
 {
   display: block;
   color: #ffffff;
@@ -29,7 +29,7 @@
 }
 
 /*changes the color when the item is hovered overflow*/
-.Menu-Item a:hover
+.menu-item a:hover
 {
   color: #ff0000;
 }
