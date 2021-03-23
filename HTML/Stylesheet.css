@@ -10,6 +10,17 @@
   
 }
 
+.Current {
+  float: center;
+  margin: 0px;
+  padding: 0px;
+  background-color: gray;
+  border-style: solid;
+  width: 100%;
+  height: 100%;
+  
+}
+
 /*There are 3 items in my menus so this defines the width and display*/
 .Menu-Item 
 {
