@@ -33,12 +33,120 @@
       </div>
 
       <div class="row">
-        <div class="col-sm-8">
-          <img src="math.png" alt="damn damn" width=100% height=40%/>
+	  
+	  
+	          <div class="col-sm-4">
+		<div class="Current">
+          <table style="width:350px; float: center; text-align: center;">
+		   <tr>
+		   <br>
+			<th > <h1>Current Price</h1> </th>
+			</tr>
+			<tr>
+			<td> <h2>$1234.56</h2></td>
+			</tr>
+			</table>
+			</div>
         </div>
-        <div class="col-sm-4">
-          <img src="value.png" alt="damn damn damn" width=100% height=40%/>
+	  
+	  
+	
+		
+
+		
+		<div class="col-sm-4">
+		<div class="Current">
+          <table style="width:350px; float: center; text-align: center;">
+		   <tr>
+		   <br>
+			<th > <h1>$ Change (Last Close)</h1> </th>
+			</tr>
+			<tr>
+			<td> <h2>$1111.11</h2></td>
+			</tr>
+			</table>
+			</div>
         </div>
+		
+		<div class="col-sm-4">
+		<div class="Current">
+          <table style="width:350px; float: center; text-align: center;">
+		   <tr>
+		   <br>
+			<th > <h1>% Change (Last Close)</h1> </th>
+			</tr>
+			<tr>
+			<td> <h2>5%</h2></td>
+			</tr>
+			</table>
+			</div>
+        </div>
+		
+		
+				<div class="col-sm-4">
+		<div class="Current">
+          <table style="width:350px; float: center; text-align: center;">
+		   <tr>
+		   <br>
+			<th > <h1>7 Day Average</h1> </th>
+			</tr>
+			<tr>
+			<td> <h2>$1111.11</h2></td>
+			</tr>
+			</table>
+			</div>
+        </div>
+		
+		<div class="col-sm-4">
+		<div class="Current">
+          <table style="width:350px; float: center; text-align: center;">
+		   <tr>
+		   <br>
+			<th > <h1>Avg Vol</h1> </th>
+			</tr>
+			<tr>
+			<td> <h2>200B</h2></td>
+			</tr>
+			</table>
+			</div>
+        </div>
+		
+		<div class="col-sm-4">
+		<div class="Current">
+          <table style="width:350px; float: center; text-align: center;">
+		   <tr>
+		   <br>
+			<th > <h1>Market Cap</h1> </th>
+			</tr>
+			<tr>
+			<td> <h2>100M</h2></td>
+			</tr>
+			</table>
+			</div>
+        </div>
+		
+	<!-- Example sql query to populate Current Price table, and other metrics in math section.
+	
+<!--	<?php
+$conn = mysqli_connect("localhost", "root", "", "table");
+if ($conn->connect_error) {
+die("Connection failed: " . $conn->connect_error);
+}
+
+$sql = "SELECT MAX(price) FROM login WHERE datestamp = CAST(get_date() AS DATE) AND curr = 'BTC'";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+while($row = $result->fetch_assoc()) {
+echo "<tr><td>" . $row["Current Price"]. "</td></tr>";
+}
+echo "</table>";
+} else { echo "0 results"; }
+
+$conn->close();
+?>
+-->
+
       </div>
     </div>
     
@@ -57,3 +165,4 @@
     -->
   </body>
 </html>
+
