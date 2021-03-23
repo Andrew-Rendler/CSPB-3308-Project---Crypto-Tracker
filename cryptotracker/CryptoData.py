@@ -11,15 +11,23 @@ class CryptoData:
         self.currentPrice = 0
         self.previousClose = 0
         self.volumeList=[]
+        self.dic = {}
 
-    def apiCall(self, kwargs):
+    def apiCall(self, endpoint, kwargs):
         cryptocompare_api = CryptoCompareAPI()
-        res = cryptocompare_api._api_call("historical_daily", kwargs)
+        res = cryptocompare_api.api_call(endpoint, kwargs)
         self.dataList = res.json()['Data']['Data']
         self.currentPrice = self.dataList[len(self.dataList)-1]['close']
         self.previousClose = self.dataList[len(self.dataList)-2]['close']
-        for i in range(int(kwargs['num_days'])):
+        for i in range(int(kwargs['num_entries'])):
             self.volumeList.append(self.dataList[i]['volumefrom'])
+
+    def getDic(self):
+        self.dic["Price"] = self.currentPrice
+        self.dic["Percent Change"] = self.percentChange()
+        self.dic["Dollar Change"] = self.dollarChange()
+        self.dic["Average Volume"] = self.averageVolume()
+        return self.dic
 
     def getData(self):
         return self.dataList

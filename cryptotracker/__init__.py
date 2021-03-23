@@ -1,12 +1,15 @@
 import os
-
+from flask import Flask, render_template
 # TODO: Figure out the module imports
 from .CryptoData import CryptoData
+# TODO: Figure out the custom module imports
 from .CryptoCompareAPI import CryptoCompareAPI
-from flask import Flask
+from .ErrorHandler import ErrorHandler
 
+# app context objects
 cryptocompare_api = CryptoCompareAPI()
 cryptodata = CryptoData()
+error_handler = ErrorHandler()
 
 
 def create_app(test_config=None):
@@ -37,23 +40,24 @@ def create_app(test_config=None):
 
     @app.route("/")
     def index():
-        kwargs = {"coin": "BTC", "currency": "USD", "num_days": "30"}
-        res = cryptocompare_api._api_call("historical_daily", kwargs).json()["Response"]
-        return res
+        # examples of api calls. A string must be passed with following format
+        #   - single argument: expr_1
+        #   - multi argument: expr_1+expr_2
+        # pass an empty dict if there are no endpoint args
+        res = cryptocompare_api.api_call("ratelimit+all", {})
 
-    # testing -- page displays BTC data from API call
-    @app.route("/data")
-    def data():
-        kwargs = {"coin": "BTC", "currency": "USD", "num_days": "30"}
-        cryptodata.apiCall(kwargs)
-        output = ""
-        newl = "<br/>"
-        output+="Percent Change Today: "
-        output+=cryptodata.percentChange()+newl
-        output+="Change in Dollars Today: "
-        output+=cryptodata.dollarChange()+newl
-        output+="Average Volume: "
-        output+=cryptodata.averageVolume()+newl
-        return output
+        # pass a dict with endpoint args
+        # kwargs = {"coin": "BTC", "currency": "USD", "num_entries": "30"}
+        # res = cryptocompare_api.api_call("historical+daily", kwargs)
+        return res.json()
+
+    # testing -- rendering html and displaying BTC data from API call
+    @app.route("/test")
+    def test():
+        kwargs = {"coin": "BTC", "currency": "USD", "num_entries": "30"}
+        cryptodata.apiCall("historical+daily", kwargs)
+        dic = {}
+        dic = cryptodata.getDic()
+        return render_template("data.html", info=dic)
 
     return app

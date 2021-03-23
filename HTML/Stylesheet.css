@@ -1,0 +1,46 @@
+/*The container*/
+.Menu {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #000000;
+  border-style: solid;
+  height: 10%;
+
+}
+
+/*There are 3 items in my menus so this defines the width and display*/
+.Menu-Item
+{
+  float: left;
+  width: 33.3%;
+}
+
+/*This sets the color and text properties for the items on the menu*/
+.Menu-Item a
+{
+  display: block;
+  color: #ffffff;
+  font-family: Georgia, serif;
+  text-align: center;
+  padding-top: 5%;
+  text-decoration: none;
+}
+
+/*changes the color when the item is hovered overflow*/
+.Menu-Item a:hover
+{
+  color: #ff0000;
+}
+
+.price{
+  color: white;
+}
+.info{
+  color: white;
+}
+.change{
+  color: green;
+  font-size: 1.5rem;
+}
