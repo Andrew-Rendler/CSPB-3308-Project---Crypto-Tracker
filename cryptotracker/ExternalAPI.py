@@ -9,6 +9,7 @@ cc_api = CryptoCompareAPI()
 
 
 class HistoricalEndpoint(Resource):
+    # ex: https://<host>:<port>/historical?interval=daily&coin=BTC&currency=USD&num_entries=10
     historical_args = {
         "interval": fields.Str(required=True),
         "coin": fields.Str(required=True),
@@ -30,6 +31,7 @@ class HistoricalEndpoint(Resource):
 
 
 class NewsEndpoint(Resource):
+    # ex: https://<host>:<port>/news?type=latest_news&subtype=article
     news_args = {
         "type": fields.Str(required=True),
         "subtype": fields.Str(required=True),
@@ -49,6 +51,7 @@ class NewsEndpoint(Resource):
 
 
 class CurrentEndpoint(Resource):
+    # ex: https://<host>:<port>/current?coin=BTC&currency=USD
     current_args = {
         "coin": fields.Str(required=True),
         "currency": fields.Str(required=True),
@@ -61,6 +64,7 @@ class CurrentEndpoint(Resource):
 
 
 class RateLimitEndpoint(Resource):
+    # ex: https://<host>:<port>/ratelimit?
     def get(self):
         query_string = "ratelimit+all"
         return cc_api.api_call(query_string, {}).json()
