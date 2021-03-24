@@ -1,10 +1,12 @@
 import os
 from flask import Flask, render_template
+from flask_restful import Api
 
 # TODO: Figure out the custom module imports
 from .CryptoCompareAPI import CryptoCompareAPI
 from .ErrorHandler import ErrorHandler
 from .CryptoData import CryptoData
+from .ExternalAPI import *
 
 # app context objects
 cryptocompare_api = CryptoCompareAPI()
@@ -19,6 +21,12 @@ def create_app(test_config=None):
         SECRET_KEY="dev",
         DATABASE=os.path.join(app.instance_path, "flaskr.sqlite"),
     )
+
+    api = Api(app)
+    api.add_resource(HistoricalEndpoint, "/historical")
+    api.add_resource(NewsEndpoint, "/news")
+    api.add_resource(CurrentEndpoint, "/current")
+    api.add_resource(RateLimitEndpoint, "/ratelimit")
 
     if test_config is None:
         # load the instance config, if it exists, when not testing

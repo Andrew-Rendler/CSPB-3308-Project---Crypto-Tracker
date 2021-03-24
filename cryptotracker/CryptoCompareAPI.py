@@ -102,6 +102,8 @@ class CryptoCompareAPI(object):
         endpoint = self.__clean_endpoints_string(endpoint)
         if kwargs != {}:
             endpoint = endpoint.format(**kwargs)
+        elif type(endpoint) == tuple:
+            endpoint = endpoint[0]
         endpoint += "&api_key={}".format(API_KEY)
         return endpoint
 
@@ -113,7 +115,6 @@ class CryptoCompareAPI(object):
         """
         Takes in the endpoint string and kwargs if any. Returns a Response from the api
         """
-
         url = self.__url_builder(endpoint, **kwargs)
         res = get(url)
         return res
