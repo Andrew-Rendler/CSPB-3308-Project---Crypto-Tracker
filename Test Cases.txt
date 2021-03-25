@@ -1,0 +1,36 @@
+Test Cases For:
+
+
+
+Get_Price(coin, currency) 
+#coin: exchange symbol for a particular cryptocurrency
+#currency: the currency used to define the value of the coin
+
+Test 1 Assertion: 
+We expect this function to return a number
+
+Check the type of the function's return. If the type is not some number, then error
+
+
+Test 2 Assertion: 
+We expect this function to return a positive value
+
+Check the value of the number that was returned, if it is negative, then error (this is likely bad data)
+
+
+Test 3 Assertion: 
+We expect this function to return a value of reasonable size (<1T)
+
+Check the value of the number that was returned, if it is over 1T, then error (this is likely bad data)
+
+
+Test 4 Assertion: 
+We expect the function to be passed an exchange symbol that is valid
+
+Compare the input string to the list of available coin on the api. If it is not present in the list, then error
+
+
+Test 5 Assertion: 
+We expect the function to be passed an currency symbol that is valid
+
+Compare the input string to the list of available currency on the api. If it is not present in the list, then error
