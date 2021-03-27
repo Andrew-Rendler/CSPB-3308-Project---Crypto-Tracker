@@ -1,7 +1,7 @@
 Test Cases For:
 
-
-
+Unit Tests - Get_Price
+--------------------------------------------------------------------------------------------------------
 Get_Price(coin, currency) 
 #coin: exchange symbol for a particular cryptocurrency
 #currency: the currency used to define the value of the coin
@@ -34,3 +34,44 @@ Test 5 Assertion:
 We expect the function to be passed an currency symbol that is valid
 
 Compare the input string to the list of available currency on the api. If it is not present in the list, then error
+
+
+Unit Tests - CryptoCompareAPI
+--------------------------------------------------------------------------------------------------------
+
+
+CryptoCompareAPI(object)
+- This is a wrapper class made to work with the Cryptocompare api endpoints.
+
+Test 1 Assertion:
+
+We expect a CryptoCompareAPI object to be instantiated
+
+Check the type of the new object and make sure that its of the type CryptoCompareAPI.
+
+Test Assertion 2 :
+We expect the api_call method to take in a query string for the available endpoint (delimited by +'s) and return the proper data.
+
+Call api_call with the a "historical" query string and expect a json payload with a 200 response. 
+
+Test Assertion 3 :
+We expect the api_call method to take in a query string for the available endpoint (delimited by +'s) and return the proper data.
+
+Call api_call with a "news" query string and expect a json payload with a 200 response. 
+
+Test Assertion 4 :
+We expect the api_call method to take in a query string for the available endpoint (delimited by +'s) and return the proper data.
+
+Call api_call with a "current" query string and expect a json payload with a 200 response. 
+
+Test Assertion 5 :
+We expect the api_call method to take in a query string for the available endpoint (delimited by +'s) and return the proper data.
+
+Call api_call with a "ratelimit" query string and expect a json payload with a 200 response.
+
+Test Assertion 6 :
+We expect the api_call method to take in a query string for the available endpoint (delimited by +'s) and return the proper data.
+
+Call api_call with an invalid query string and expect a 400 error to be thrown.
+
+--------------------------------------------------------------------------------------------------------
