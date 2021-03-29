@@ -3,7 +3,6 @@ var URL_FRAGMENT = "https://min-api.cryptocompare.com/data/v2/histoday?fsym=BTC&
 var url = URL_FRAGMENT + "&api_key=" + API_KEY;
 var T = 1000000000000;
 var date = 0
-var dateDT = luxon.DateTime
 var avgVol = 0;
 var avgPrice = 0;
 var priceOpen = 0;
@@ -11,7 +10,7 @@ var priceClose = 0;
 var priceLow= 0;
 var priceHigh = 0;
 var cryDataDay = [];
-var cryDataList = [];
+
 
 fetch(url)
   .then(
@@ -68,14 +67,15 @@ fetch(url)
         priceLow = (obj['Data']['Data'][i]['low']);
         priceHigh = (obj['Data']['Data'][i]['high']);
         date = (obj['Data']['Data'][i]['time']*1000)
-        dateDT = date.fromMillis()
-        cryDataDay.push(dateDT, priceOpen, priceHigh, priceLow, priceClose);
-        cryDataList[i] = cryDataDay;
-        cryDataDay = []
+        payload = {
+          c: priceClose,
+          h: priceHigh,
+          l: priceLow,
+          o: priceOpen,
+          t: date
+        }
+        cryDataDay.push(payload)
       }
-    
-var barCount = 6;
-var initialDateStr = '01 Apr 2017 00:00 Z';
 
 var ctx = document.getElementById('chart').getContext('2d');
 ctx.canvas.width = 1000;
@@ -85,46 +85,10 @@ var chart = new Chart(ctx, {
 	data: {
 		datasets: [{
 			label: 'Bitcoin',
-			data: cryDataList,
-      /* getRandomData(initialDateStr, barCount) */
+			data: cryDataDay,
 		}]
 	}
 });
 
-var getRandomInt = function(max) {
-	return Math.floor(Math.random() * Math.floor(max));
-};
-
-function randomNumber(min, max) {
-	return Math.random() * (max - min) + min;
-}
-
-function randomBar(date, lastClose) {
-	var open = randomNumber(lastClose * 0.95, lastClose * 1.05).toFixed(2);
-	var close = randomNumber(open * 0.95, open * 1.05).toFixed(2);
-	var high = randomNumber(Math.max(open, close), Math.max(open, close) * 1.1).toFixed(2);
-	var low = randomNumber(Math.min(open, close) * 0.9, Math.min(open, close)).toFixed(2);
-	return {
-		t: date.valueOf(),
-		o: open,
-		h: high,
-		l: low,
-		c: close
-	};
-
-}
-
-function getRandomData(dateStr, count) {
-	var date = luxon.DateTime.fromRFC2822(dateStr);
-	var data = [randomBar(date, 30)];
-	while (data.length < count) {
-		date = date.plus({days: 1});
-		if (date.weekday <= 5) {
-			data.push(randomBar(date, data[data.length - 1].c));
-		}
-	}
-	return data;
-}
 
 })
-
