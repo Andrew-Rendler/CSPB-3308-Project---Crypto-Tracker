@@ -74,4 +74,39 @@ We expect the api_call method to take in a query string for the available endpoi
 
 Call api_call with an invalid query string and expect a 400 error to be thrown.
 
+
+Unit Tests - ExternalAPI.py
 --------------------------------------------------------------------------------------------------------
+
+There are 4 classes in this file that are very similar. As such we can run several generic tests with little to no variation on every class.
+
+Test 1 Assertion:
+
+We expect the args to match the keywords in the URL.
+
+Call the function and check the args dictionary matches the keywords in the URL.
+
+Test 2 Assertion:
+
+We expect a json object to be returned.
+
+Call the function and check that a json object is returned.
+
+Test 3 Assertion:
+
+We expect that there will be a total of 4, 2 and 2 keywords for the historical, news and current endpoint classes.
+
+Check the length of the args dictionary in each class equals the length above.
+
+Test 4 Assertion:
+
+We expect that a query_string and payload will be constructed out of the keywords in the URL.
+
+Call each class and check the keywords in the query_string and payload match the keywords in the URL.
+
+
+Test 5 Assertion:
+
+We expect an api call will be successfully made using the arguments constructed in each class.
+
+Given a correct URL call each class and check that constructed query_string and payload arguments successfully call our API.
