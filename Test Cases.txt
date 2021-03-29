@@ -2,35 +2,35 @@ Test Cases For:
 
 Unit Tests - Get_Price
 --------------------------------------------------------------------------------------------------------
-Get_Price(coin, currency) 
+Get_Price(coin, currency)
 #coin: exchange symbol for a particular cryptocurrency
 #currency: the currency used to define the value of the coin
 
-Test 1 Assertion: 
+Test 1 Assertion:
 We expect this function to return a number
 
 Check the type of the function's return. If the type is not some number, then error
 
 
-Test 2 Assertion: 
+Test 2 Assertion:
 We expect this function to return a positive value
 
 Check the value of the number that was returned, if it is negative, then error (this is likely bad data)
 
 
-Test 3 Assertion: 
+Test 3 Assertion:
 We expect this function to return a value of reasonable size (<1T)
 
 Check the value of the number that was returned, if it is over 1T, then error (this is likely bad data)
 
 
-Test 4 Assertion: 
+Test 4 Assertion:
 We expect the function to be passed an exchange symbol that is valid
 
 Compare the input string to the list of available coin on the api. If it is not present in the list, then error
 
 
-Test 5 Assertion: 
+Test 5 Assertion:
 We expect the function to be passed an currency symbol that is valid
 
 Compare the input string to the list of available currency on the api. If it is not present in the list, then error
@@ -52,17 +52,17 @@ Check the type of the new object and make sure that its of the type CryptoCompar
 Test Assertion 2 :
 We expect the api_call method to take in a query string for the available endpoint (delimited by +'s) and return the proper data.
 
-Call api_call with the a "historical" query string and expect a json payload with a 200 response. 
+Call api_call with the a "historical" query string and expect a json payload with a 200 response.
 
 Test Assertion 3 :
 We expect the api_call method to take in a query string for the available endpoint (delimited by +'s) and return the proper data.
 
-Call api_call with a "news" query string and expect a json payload with a 200 response. 
+Call api_call with a "news" query string and expect a json payload with a 200 response.
 
 Test Assertion 4 :
 We expect the api_call method to take in a query string for the available endpoint (delimited by +'s) and return the proper data.
 
-Call api_call with a "current" query string and expect a json payload with a 200 response. 
+Call api_call with a "current" query string and expect a json payload with a 200 response.
 
 Test Assertion 5 :
 We expect the api_call method to take in a query string for the available endpoint (delimited by +'s) and return the proper data.
@@ -110,3 +110,33 @@ Test 5 Assertion:
 We expect an api call will be successfully made using the arguments constructed in each class.
 
 Given a correct URL call each class and check that constructed query_string and payload arguments successfully call our API.
+
+
+Unit Tests - CryptoData
+--------------------------------------------------------------------------------------------------------
+
+
+Test Assertion 1:
+We expect the apiCall method to instantiate a CryptoCompareAPI object and store the json data in the form of a list of dictionaries in dataList.
+
+Verify dataList is not empty and contains at least one dictionary.
+
+Test Assertion 2:
+We expect the dollarChange method to return a float with exactly 2 digits after the decimal.
+
+Ensure a float with two digits after the decimal is returned and raise an error otherwise.
+
+Test Assertion 3:
+We expect the dollarChange method to indicate whether the change in price from the previous day is positive or negative.
+
+Verify the first character is either a "+" or a "-" and raise an error otherwise.
+
+Test Assertion 4:
+We expect the getVolume method to return a list with length equal to the value of 'num_entries' in the kwargs argument passed into apiCall.
+
+Verify the length of the list returned by getVolume is equal to the value of 'num_entries' in the kwargs dictionary.
+
+Test Assertion 5:
+We expect the percentChange method to return a float with the last character equal to "%".
+
+Ensure a float is returned from percentChange and last character is "%" otherwise raise an error.
