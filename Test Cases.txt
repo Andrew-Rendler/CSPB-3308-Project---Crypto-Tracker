@@ -122,9 +122,9 @@ We expect the apiCall method to instantiate a CryptoCompareAPI object and store 
 Verify dataList is not empty and contains at least one dictionary.
 
 Test Assertion 2:
-We expect the dollarChange method to return a float with exactly 2 digits after the decimal.
+We expect the dollarChange method to return a string containing a number with exactly 2 digits after the decimal point.
 
-Ensure a float with two digits after the decimal is returned and raise an error otherwise.
+Ensure a string containing a number with two digits after the decimal point is returned and raise an error otherwise.
 
 Test Assertion 3:
 We expect the dollarChange method to indicate whether the change in price from the previous day is positive or negative.
@@ -137,6 +137,6 @@ We expect the getVolume method to return a list with length equal to the value o
 Verify the length of the list returned by getVolume is equal to the value of 'num_entries' in the kwargs dictionary.
 
 Test Assertion 5:
-We expect the percentChange method to return a float with the last character equal to "%".
+We expect the percentChange method to return a string with the last character equal to "%".
 
-Ensure a float is returned from percentChange and last character is "%" otherwise raise an error.
+Ensure a string is returned from percentChange and last character is "%" otherwise raise an error.
