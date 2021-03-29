@@ -1,4 +1,3 @@
-var ctx = document.getElementById('myChart');
 var API_KEY = "15bbc2af04315d0d116d7a99909e23d0a026a0ebf729cb0033d82295b3748d6f";
 var URL_FRAGMENT = "https://min-api.cryptocompare.com/data/v2/histoday?fsym=BTC&tsym=USD&limit=5";
 var url = URL_FRAGMENT + "&api_key=" + API_KEY;
