@@ -66,6 +66,10 @@ def create_app(test_config=None):
         cryptodata.apiCall("historical+daily", kwargs)
         dic = {}
         dic = cryptodata.getDic()
-        return render_template("data.html", info=dic)
+        return render_template("test.html", info=dic)
+
+    @app.route("/calc")
+    def calc():
+        return render_template("calc.html")
 
     return app
