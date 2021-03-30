@@ -1,0 +1,43 @@
+body {
+  text-align: center;
+  background-color: #283149;
+}
+
+
+.output{
+  outline: none;
+  border: 10px solid #404B69;
+  font-size: 1.75rem;
+  font-family: 'Arvo', cursive;
+  line-height: 2;
+  font-weight: 100;
+  color: white;
+
+  border-radius: 15px;
+  display: inline-block;
+  width: 356px;
+  height: 70px;
+  text-align: right;
+  margin: 4px;
+  background-color: black;
+}
+.btn {
+  outline: none;
+  border: 10px solid #404B69;
+  font-size: 1.5rem;
+  font-family: 'Arvo', cursive;
+  line-height: 2;
+  font-weight: 900;
+  color: #DA0463;
+  text-shadow: 3px 0 #DBEDF3;
+  border-radius: 15px;
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  text-align: center;
+  margin: 4px;
+  background-color: white;
+}
+.AC{
+  font-size: 1.2rem;
+}
