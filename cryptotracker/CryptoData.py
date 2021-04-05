@@ -1,33 +1,37 @@
 import os
-from .CryptoCompareAPI import CryptoCompareAPI
+
+#from .CryptoCompareAPI import CryptoCompareAPI
+
+import requests
 
 million = 1000000
 billion = 1000000000
 trillion = 1000000000000
+API_KEY = "15bbc2af04315d0d116d7a99909e23d0a026a0ebf729cb0033d82295b3748d6f"
+URL_FRAGMENT = "https://min-api.cryptocompare.com/data/v2/histoday?fsym=BTC&tsym=USD&limit=5"
+url = URL_FRAGMENT + "&api_key=" + API_KEY;
 
 class CryptoData:
-    def __init__(self):
-        self.dataList =[]
-        self.currentPrice = 0
-        self.previousClose = 0
-        self.volumeList=[]
-        self.dic = {}
+    dataList = []
+    currentPrice = 0
+    previousClose = 0
+    volumeList = []
 
-    def apiCall(self, endpoint, kwargs):
-        cryptocompare_api = CryptoCompareAPI()
-        res = cryptocompare_api.api_call(endpoint, kwargs)
+    def __init__(self):
+        res = requests.get(url)
         self.dataList = res.json()['Data']['Data']
         self.currentPrice = self.dataList[len(self.dataList)-1]['close']
         self.previousClose = self.dataList[len(self.dataList)-2]['close']
-        for i in range(int(kwargs['num_entries'])):
+        for i in range(5):
             self.volumeList.append(self.dataList[i]['volumefrom'])
 
     def getDic(self):
-        self.dic["Price"] = self.currentPrice
-        self.dic["Percent Change"] = self.percentChange()
-        self.dic["Dollar Change"] = self.dollarChange()
-        self.dic["Average Volume"] = self.averageVolume()
-        return self.dic
+        dic = {}
+        dic["Price"] = self.currentPrice
+        dic["Percent Change"] = self.percentChange()
+        dic["Dollar Change"] = self.dollarChange()
+        dic["Average Volume"] = self.averageVolume()
+        return dic
 
     def getData(self):
         return self.dataList
