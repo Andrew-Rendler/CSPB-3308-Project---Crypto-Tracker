@@ -1,0 +1,78 @@
+/*The container*/
+.menu {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #000000;
+  border-style: solid;
+  height: 10%;
+
+}
+
+/*There are 3 items in my menus so this defines the width and display*/
+.menu-item
+{
+  float: left;
+  width: 33.3%;
+}
+
+/*This sets the color and text properties for the items on the menu*/
+.menu-item a
+{
+  display: block;
+  color: #ffffff;
+  font-family: Georgia, serif;
+  text-align: center;
+  padding-top: 5%;
+  text-decoration: none;
+}
+
+/*changes the color when the item is hovered overflow*/
+.menu-item a:hover
+{
+  color: #ff0000;
+}
+
+.price{
+  color: green;
+}
+
+.info{
+  color: white;
+}
+
+.change{
+  color: green;
+  font-size: 1.5rem;
+}
+
+.perChange{
+  color: green;
+  font-size: 1.5rem;
+}
+
+.marketCap{
+  color: white;
+}
+
+.avgVol{
+  color: white;
+}
+
+.avgPrice{
+  color: white;
+}
+
+/*from chart js*/
+* {
+	font-family: Sans-Serif;
+}
+
+h1 {
+	font-size: 1.5em;
+}
+
+h2 {
+	font-size: 1.25em;
+}

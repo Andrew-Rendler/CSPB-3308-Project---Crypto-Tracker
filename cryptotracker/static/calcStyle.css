@@ -1,13 +1,12 @@
 body {
-  text-align: center;
   background-color: #283149;
 }
 
 
 .output{
   outline: none;
-  border: 10px solid #404B69;
-  font-size: 1.75rem;
+  border: 7px solid #404B69;
+  font-size: 1.3rem;
   font-family: 'Arvo', cursive;
   line-height: 2;
   font-weight: 100;
@@ -15,16 +14,39 @@ body {
 
   border-radius: 15px;
   display: inline-block;
-  width: 356px;
-  height: 70px;
+  width: 270px;
+  height: 50px;
   text-align: right;
   margin: 4px;
   background-color: black;
 }
+.btntext{
+  padding: 0px;
+  margin: 0px;
+  text-align: center
+}
+.calcbtn{
+  color: #444444;
+  border: 3px solid #444444;
+  border-radius: 10px;
+  width: 100px;
+  height: 30px;
+  margin: 5px;
+  margin-left: 10px;
+  background-color: white;
+  padding: 4px;
+}
+.link{
+  text-decoration: none;
+  font-size:1rem;
+  font-family: 'Arvo';
+  font-weight: 900;
+  color: #444444;
+}
 .btn {
   outline: none;
-  border: 10px solid #404B69;
-  font-size: 1.5rem;
+  border: 7px solid #404B69;
+  font-size: 1.1rem;
   font-family: 'Arvo', cursive;
   line-height: 2;
   font-weight: 900;
@@ -32,12 +54,12 @@ body {
   text-shadow: 3px 0 #DBEDF3;
   border-radius: 15px;
   display: inline-block;
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   text-align: center;
-  margin: 4px;
+  margin: 3px;
   background-color: white;
 }
 .AC{
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
