@@ -35,7 +35,7 @@
 }
 
 .price{
-  color: white;
+  color: green;
 }
 
 .info{
@@ -45,4 +45,34 @@
 .change{
   color: green;
   font-size: 1.5rem;
+}
+
+.perChange{
+  color: green;
+  font-size: 1.5rem;
+}
+
+.marketCap{
+  color: white;
+}
+
+.avgVol{
+  color: white;
+}
+
+.avgPrice{
+  color: white;
+}
+
+/*from chart js*/
+* {
+	font-family: Sans-Serif;
+}
+
+h1 {
+	font-size: 1.5em;
+}
+
+h2 {
+	font-size: 1.25em;
 }
