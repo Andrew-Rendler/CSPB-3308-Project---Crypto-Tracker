@@ -62,8 +62,6 @@ def create_app(test_config=None):
     # testing -- rendering html and displaying BTC data from API call
     @app.route("/test")
     def test():
-        kwargs = {"coin": "BTC", "currency": "USD", "num_entries": "30"}
-        cryptodata.apiCall("historical+daily", kwargs)
         dic = {}
         dic = cryptodata.getDic()
         return render_template("test.html", info=dic)
