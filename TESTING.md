@@ -12,6 +12,8 @@ Andrew Rendler
       4. `python3 CryptoDataUnitTest.py`
       5. `python3 CryptoCompareAPIUnitTest.py`
 
+---
+
 ### CryptoCompareAPIUnitTest
 
 ### Use case name
