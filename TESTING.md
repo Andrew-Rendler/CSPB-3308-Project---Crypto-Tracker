@@ -10,7 +10,7 @@ Andrew Rendler
       2. `. venv/bin/activate`
       3. `pip3 install -r requirements.txt`
       4. `python3 CryptoDataUnitTest.py`
-      4. `python3 CryptoCompareAPIUnitTest.py`
+      5. `python3 CryptoCompareAPIUnitTest.py`
 
 ### CryptoCompareAPIUnitTest
 
@@ -36,6 +36,8 @@ Andrew Rendler
 
 ##### Status (Pass/Fail)
   - Pass
+
+---
 
 ### CryptoDataUnitTest
 
@@ -64,6 +66,10 @@ Andrew Rendler
 ##### Status (Pass/Fail)
   - Pass
 
+
+---
+### Graph Test
+
 ### Use case name
   - Verify graph is displaying live data
 
@@ -87,6 +93,10 @@ Andrew Rendler
 
 ### Status (Pass/Fail)
   - Pass
+
+---
+
+### Math Section Test
 
 ### Use case name
   - Verify the math section displays live data
