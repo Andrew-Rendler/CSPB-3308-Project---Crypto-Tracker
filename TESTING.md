@@ -17,10 +17,10 @@ Andrew Rendler
 ### CryptoCompareAPIUnitTest
 
 ### Use case name
-  - Test Instantiation of CryptoCompareAPI
+  - Test CryptoCompareAPI Endpoints
 
 ### Description
-  - Tests Instantiation of CryptoCompareAPI
+  - Tests the CryptoCompareAPI functionality
 
 ### Test steps
   1. Create a new instance on CryptoCompareAPI2
