@@ -48,20 +48,26 @@ class ChartBuilder {
     let priceClose = 0;
     let priceLow = 0;
     let priceHigh = 0;
-    let price = obj['Data']['Data'][5]['close'];
-    let yesterday = obj['Data']['Data'][4]['close'];
+    let price = obj['Data']['Data'][INTERVAL]['close'];
+    let yesterday = obj['Data']['Data'][INTERVAL - 1]['close'];
     let change = this.percentChange(price, yesterday);
     let dchange = this.dollarChange(price, yesterday);
     let mcap = this.marketCap(price);
 
     for (let j = 0; j <= this.interval; j++) {
       let tempVol = obj['Data']['Data'][j]['volumeto']
-      let tempPrice = obj['Data']['Data'][j]['close'];
       avgVol = avgVol + tempVol
+    }
+
+    avgVol = Math.floor(avgVol / INTERVAL);
+    
+
+    for (let j = INTERVAL; j > INTERVAL - 7; j--) {
+      let tempPrice = obj['Data']['Data'][j]['close'];
       avgPrice = avgPrice + tempPrice
     }
-    avgVol = Math.floor(avgVol / 6);
-    avgPrice = Math.floor(avgPrice / 6);
+
+    avgPrice = Math.floor(avgPrice / 7);
 
     let priceInner = `<h2>$${price} </h2>`;
     let dchangeInner = `<h3><span class ="change">${dchange}</span></h3>`;
