@@ -52,12 +52,12 @@ def create_app(test_config=None):
         #   - single argument: expr_1
         #   - multi argument: expr_1+expr_2
         # pass an empty dict if there are no endpoint args
-        #res = cryptocompare_api.api_call("ratelimit+all", {})
+        # res = cryptocompare_api.api_call("ratelimit+all", {})
         return render_template("index.html")
         # pass a dict with endpoint args
         # kwargs = {"coin": "BTC", "currency": "USD", "num_entries": "30"}
         # res = cryptocompare_api.api_call("historical+daily", kwargs)
-        #return res.json()
+        # return res.json()
 
     # testing -- rendering html and displaying BTC data from API call
     @app.route("/test")
@@ -69,7 +69,5 @@ def create_app(test_config=None):
     @app.route("/calc")
     def calc():
         return render_template("calc.html")
-
-
 
     return app
