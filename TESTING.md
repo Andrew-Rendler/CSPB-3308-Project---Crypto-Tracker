@@ -12,7 +12,7 @@ Andrew Rendler
       4. `python3 CryptoDataUnitTest.py`
       4. `python3 CryptoCompareAPIUnitTest.py`
 
-### CryptoCompareAPIUnitTeset
+### CryptoCompareAPIUnitTest
 
 ### Use case name
   - Test Instantiation of CryptoCompareAPI
@@ -37,7 +37,7 @@ Andrew Rendler
 ##### Status (Pass/Fail)
   - Pass
 
-### CryptoDataUnitTeset
+### CryptoDataUnitTest
 
 ### Use case name
   - Verify CryptoData class returns correctly formatted data
