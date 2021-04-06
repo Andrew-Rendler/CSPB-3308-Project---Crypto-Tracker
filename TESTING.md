@@ -1,4 +1,4 @@
-### Cryptotracker
+### Crypto Tracker
 Trent Resh  
 Ben Kupernik  
 Ryan Power  
