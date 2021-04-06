@@ -1,8 +1,8 @@
 ### Cryptotracker
-#### Trent Resh
-#### Ben Kupernik
-#### Ryan Power
-#### Andrew Rendler
+Trent Resh  
+Ben Kupernik  
+Ryan Power  
+Andrew Rendler
 
 # Testing
   - Steps to run:
