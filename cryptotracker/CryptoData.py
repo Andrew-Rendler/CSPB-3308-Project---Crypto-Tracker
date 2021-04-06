@@ -1,4 +1,7 @@
-from CryptoCompareAPI import CryptoCompareAPI
+try:
+    from CryptoCompareAPI import CryptoCompareAPI
+except:
+    from .CryptoCompareAPI import CryptoCompareAPI  
 
 MILLION = 1000000
 BILLION = 1000000000
