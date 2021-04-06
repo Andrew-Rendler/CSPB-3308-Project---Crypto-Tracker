@@ -30,3 +30,39 @@
   
 ##### Status (Pass/Fail)
   - Pass
+
+### Use case name
+    Verify graph is displaying live data
+### Description
+    Test the main crypto graph
+### Pre-conditions
+    User has access to the main webpage
+### Test steps
+    1. Open index.html
+    2. Check the graph has 100 data points
+    3. Check the highs are higher than the lows
+    4. Check that the open and close prices are accurate
+### Expected result
+    100 data points should be displayed with correct historical data
+### Actual result
+    100 data points are displayed with correct historical data
+### Status (Pass/Fail)
+    Pass
+
+### Use case name
+    Verify the math section displays live data
+### Description
+    Test the main crypto math section
+### Pre-conditions
+    User has access to the main webpage
+### Test steps
+    1. Open index.html
+    2. Check the current price is displayed
+    3. Check the change in price is correct
+### Expected result
+    The current price will display the closing price for bitcoin for the last displayed data point and the change in price will be displayed and correct.
+### Actual result
+    The current price and change in price is displayed. 
+### Status (Pass/Fail)
+    Pass
+
