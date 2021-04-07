@@ -2,10 +2,11 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
+
 class CryptoModel(db.Model):
     __tablename__ = "crypto_table"
 
-    id = db.Column(db.Integer, primary_key = True)
+    id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String())
     price = db.Column(db.Integer())
 
@@ -16,10 +17,11 @@ class CryptoModel(db.Model):
     def __repr__(self):
         return f"{self.name}:{self.price}"
 
+
 class Bitcoin(db.Model):
     __tablename__ = "bitcoin_table"
 
-    date = db.Column(db.String(), primary_key= True, nullable=False)
+    date = db.Column(db.String(), primary_key=True, nullable=False)
     price_open = db.Column(db.Float)
     price_close = db.Column(db.Float)
     price_high = db.Column(db.Float)
@@ -39,7 +41,7 @@ class Bitcoin(db.Model):
 class Ethereum(db.Model):
     __tablename__ = "ethereum_table"
 
-    date = db.Column(db.String(), primary_key= True, nullable=False)
+    date = db.Column(db.String(), primary_key=True, nullable=False)
     price_open = db.Column(db.Float)
     price_close = db.Column(db.Float)
     price_high = db.Column(db.Float)
@@ -59,7 +61,7 @@ class Ethereum(db.Model):
 class Dogecoin(db.Model):
     __tablename__ = "dogecoin_table"
 
-    date = db.Column(db.String(), primary_key= True, nullable=False)
+    date = db.Column(db.String(), primary_key=True, nullable=False)
     price_open = db.Column(db.Float)
     price_close = db.Column(db.Float)
     price_high = db.Column(db.Float)

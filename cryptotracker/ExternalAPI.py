@@ -4,18 +4,15 @@ from flask_restful import Resource, reqparse
 from webargs import fields, validate
 from webargs.flaskparser import use_args, use_kwargs, parser, abort
 from .CryptoCompareAPI import CryptoCompareAPI
-from .models import db, Bitcoin
-
+from .models import db, Bitcoin, Ethereum, Dogecoin
 
 cc_api = CryptoCompareAPI()
-
 req_parse = reqparse.RequestParser()
 
 
-class BitcoinEndpoint(Resource):
+class AddBitcoinEndpoint(Resource):
     def post(self) -> Response:
         args = req_parse.parse_args()
-        print(args)
         price_open = float(request.args.get("price_open"))
         price_close = float(request.args.get("price_close"))
         price_high = float(request.args.get("price_high"))
@@ -29,6 +26,47 @@ class BitcoinEndpoint(Resource):
             price_low=price_low,
         )
         db.session.add(btc)
+        # handle errors here try/except
+        db.session.commit()
+        return Response("success: 200", status=200, mimetype="application/json")
+
+
+class AddBitcoinEndpoint(Resource):
+    def post(self) -> Response:
+        args = req_parse.parse_args()
+        price_open = float(request.args.get("price_open"))
+        price_close = float(request.args.get("price_close"))
+        price_high = float(request.args.get("price_high"))
+        price_low = float(request.args.get("price_low"))
+        date = int(request.args.get("date"))
+        eth = Ethereum(
+            date=date,
+            price_open=price_open,
+            price_close=price_close,
+            price_high=price_high,
+            price_low=price_low,
+        )
+        db.session.add(eth)
+        db.session.commit()
+        return Response("success: 200", status=200, mimetype="application/json")
+
+
+class AddBitcoinEndpoint(Resource):
+    def post(self) -> Response:
+        args = req_parse.parse_args()
+        price_open = float(request.args.get("price_open"))
+        price_close = float(request.args.get("price_close"))
+        price_high = float(request.args.get("price_high"))
+        price_low = float(request.args.get("price_low"))
+        date = int(request.args.get("date"))
+        doge = Dogecoin(
+            date=date,
+            price_open=price_open,
+            price_close=price_close,
+            price_high=price_high,
+            price_low=price_low,
+        )
+        db.session.add(doge)
         db.session.commit()
         return Response("success: 200", status=200, mimetype="application/json")
 
