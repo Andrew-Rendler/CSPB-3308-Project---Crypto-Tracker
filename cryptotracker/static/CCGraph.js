@@ -25,19 +25,19 @@ class ChartBuilder {
   }
 
   percentChange(num1, num2) {
-    return (num1 - num2) / num2 * 100
+    return ((num1 - num2) / num2 * 100).toFixed(2)
   }
 
   dollarChange(num1, num2) {
     var x = num1 - num2;
     if (x < 0) {
-      return x;
+      return x.toFixed(2);
     }
     return "+" + String(x.toFixed(2));
   }
 
   marketCap(num1) {
-    return (num1 * 18658650) / T;
+    return ((num1 * 18658650) / T).toFixed(3);
   }
 
   cleanData(obj) {
@@ -70,9 +70,9 @@ class ChartBuilder {
     avgPrice = Math.floor(avgPrice / 7);
 
     let priceInner = `<h2>$${price.toFixed(2)} </h2>`;
-    let dchangeInner = `<h3><span class ="change">${dchange.toFixed(2)}</span></h3>`;
-    let changeInner = `<h3><span class ="change">${change.toFixed(2)}%</span></h3>`;
-    let mcapInner = `<h3>$${mcap.toFixed(3)}T </h3>`;
+    let dchangeInner = `<h3><span class ="change">${dchange}</span></h3>`;
+    let changeInner = `<h3><span class ="change">${change}%</span></h3>`;
+    let mcapInner = `<h3>$${mcap}T </h3>`;
     let avgVolInner = `<h3>${avgVol} </h3>`;
     let avgPriceInner = `<h3>$${avgPrice}</h3>`;
 
