@@ -92,15 +92,7 @@ class ChartBuilder {
     this.addHtml(".marketCap", mcapInner)
     this.addHtml(".avgVol", avgVolInner)
     this.addHtml(".avgPrice", avgPriceInner)
-    if (document.querySelector(".bit").id == "bitid"){
-      this.addHtml(".news","BITCOIN NEWS")
-    }
-    else if (document.querySelector(".bit").id == "dogeid"){
-      this.addHtml(".news","DOGECOIN NEWS")
-    }
-    else {
-      this.addHtml(".news","ETHEREUM NEWS")
-    }
+  
 
     for (var i = 0; i <= this.interval; i++) {
       priceOpen = (obj['Data']['Data'][i]['open']);
