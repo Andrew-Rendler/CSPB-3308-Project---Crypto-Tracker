@@ -1,6 +1,4 @@
 import json
-import db
-
 from flask import Flask, Response, request
 from flask_restful import Resource
 from webargs import fields, validate
