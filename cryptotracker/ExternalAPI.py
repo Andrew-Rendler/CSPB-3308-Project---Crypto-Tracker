@@ -1,6 +1,6 @@
 import json
 from flask import Flask, Response, request
-from flask_restful import Resource
+from flask_restful import Resource, reqparse
 from webargs import fields, validate
 from webargs.flaskparser import use_args, use_kwargs, parser, abort
 from .CryptoCompareAPI import CryptoCompareAPI
@@ -11,7 +11,9 @@ cc_api = CryptoCompareAPI()
 
 
 class BitcoinEndpoint(Resource):
-    def post(self, args) -> Response:
+    def post(self) -> Response:
+        args = parser.parse_args()
+        print(args)
         price_open = float(request.args.get("price_open"))
         price_close = float(request.args.get("price_close"))
         price_high = float(request.args.get("price_high"))
