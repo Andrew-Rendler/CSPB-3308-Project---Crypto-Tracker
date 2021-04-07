@@ -31,7 +31,7 @@ class AddBitcoinEndpoint(Resource):
         return Response("success: 200", status=200, mimetype="application/json")
 
 
-class AddBitcoinEndpoint(Resource):
+class AddEthereumEndpoint(Resource):
     def post(self) -> Response:
         args = req_parse.parse_args()
         price_open = float(request.args.get("price_open"))
@@ -51,7 +51,7 @@ class AddBitcoinEndpoint(Resource):
         return Response("success: 200", status=200, mimetype="application/json")
 
 
-class AddBitcoinEndpoint(Resource):
+class AddDogecoinEndpoint(Resource):
     def post(self) -> Response:
         args = req_parse.parse_args()
         price_open = float(request.args.get("price_open"))
