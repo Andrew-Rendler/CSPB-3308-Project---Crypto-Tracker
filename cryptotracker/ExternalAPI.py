@@ -4,7 +4,7 @@ from flask_restful import Resource, reqparse
 from webargs import fields, validate
 from webargs.flaskparser import use_args, use_kwargs, parser, abort
 from .CryptoCompareAPI import CryptoCompareAPI
-from .models import db
+from .models import db, Bitcoin
 
 
 cc_api = CryptoCompareAPI()
