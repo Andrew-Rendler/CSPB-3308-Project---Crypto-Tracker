@@ -9,12 +9,12 @@ from .models import db
 
 cc_api = CryptoCompareAPI()
 
-parser = reqparse.RequestParser()
+req_parse = reqparse.RequestParser()
 
 
 class BitcoinEndpoint(Resource):
     def post(self) -> Response:
-        args = parser.parse_args()
+        args = req_parse.parse_args()
         print(args)
         price_open = float(request.args.get("price_open"))
         price_close = float(request.args.get("price_close"))
