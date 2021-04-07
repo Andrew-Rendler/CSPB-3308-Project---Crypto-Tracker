@@ -9,6 +9,8 @@ from .models import db
 
 cc_api = CryptoCompareAPI()
 
+parser = reqparse.RequestParser()
+
 
 class BitcoinEndpoint(Resource):
     def post(self) -> Response:
