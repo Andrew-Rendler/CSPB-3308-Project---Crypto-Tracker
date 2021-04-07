@@ -11,21 +11,12 @@ cc_api = CryptoCompareAPI()
 
 
 class BitcoinEndpoint(Resource):
-    add_args = {
-        "date": fields.Int(required=True),
-        "price_high": fields.Float(required=True),
-        "price_low": fields.Float(required=True),
-        "price_open": fields.Float(required=True),
-        "price_close": fields.Float(required=True),
-    }
-
-    @use_args(add_args, location="query")
-    def put(self, args) -> Response:
-        price_open = request.args.get("price_open")
-        price_close = request.args.get("price_close")
-        price_high = rrequest.args.get("price_high")
-        price_low = request.args.get("price_low")
-        date = request.args.get("date")
+    def post(self, args) -> Response:
+        price_open = float(request.args.get("price_open"))
+        price_close = float(request.args.get("price_close"))
+        price_high = float(request.args.get("price_high"))
+        price_low = float(request.args.get("price_low"))
+        date = int(request.args.get("date"))
         btc = Bitcoin(
             date=date,
             price_open=price_open,
