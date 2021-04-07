@@ -2,11 +2,10 @@ body {
   background-color: #283149;
 }
 
-
 .output{
   outline: none;
   border: 7px solid #404B69;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   font-family: 'Arvo', cursive;
   line-height: 2;
   font-weight: 100;
@@ -15,11 +14,12 @@ body {
   border-radius: 15px;
   display: inline-block;
   width: 270px;
-  height: 50px;
+  height: 60px;
   text-align: right;
   margin: 4px;
   background-color: black;
 }
+
 .btntext{
   padding: 0px;
   margin: 0px;
@@ -34,7 +34,7 @@ body {
   margin: 5px;
   margin-left: 10px;
   background-color: white;
-  padding: 4px;
+  padding: 0px;
 }
 .link{
   text-decoration: none;
