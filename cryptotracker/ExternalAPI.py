@@ -6,6 +6,8 @@ from flask_restful import Resource
 from webargs import fields, validate
 from webargs.flaskparser import use_args, use_kwargs, parser, abort
 from .CryptoCompareAPI import CryptoCompareAPI
+from .models import db
+
 
 cc_api = CryptoCompareAPI()
 
