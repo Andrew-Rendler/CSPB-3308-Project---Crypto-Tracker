@@ -35,6 +35,7 @@ def create_app(test_config=None):
     api.add_resource(NewsEndpoint, "/news")
     api.add_resource(CurrentEndpoint, "/current")
     api.add_resource(RateLimitEndpoint, "/ratelimit")
+    api.add_resource(BitcoinEndpoint, "/add-bitcoin")
 
     if test_config is None:
         # load the instance config, if it exists, when not testing

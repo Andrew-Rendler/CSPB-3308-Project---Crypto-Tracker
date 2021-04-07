@@ -1,11 +1,41 @@
 import json
-from flask import Flask
+import db
+
+from flask import Flask, Response, request
 from flask_restful import Resource
 from webargs import fields, validate
 from webargs.flaskparser import use_args, use_kwargs, parser, abort
 from .CryptoCompareAPI import CryptoCompareAPI
 
 cc_api = CryptoCompareAPI()
+
+
+class BitcoinEndpoint(Resource):
+    add_args = {
+        "date": fields.Int(required=True),
+        "price_high": fields.Float(required=True),
+        "price_low": fields.Float(required=True),
+        "price_open": fields.Float(required=True),
+        "price_close": fields.Float(required=True),
+    }
+
+    @use_args(historical_args, location="query")
+    def put(self, args) -> Response:
+        price_open = request.args.get("price_open")
+        price_close = request.args.get("price_close")
+        price_high = rrequest.args.get("price_high")
+        price_low = request.args.get("price_low")
+        date = request.args.get("date")
+        btc = Bitcoin(
+            date=date,
+            price_open=price_open,
+            price_close=price_close,
+            price_high=price_high,
+            price_low=price_low,
+        )
+        db.session.add(btc)
+        db.session.commit()
+        return Response("success: 200", status=200, mimetype="application/json")
 
 
 class HistoricalEndpoint(Resource):
