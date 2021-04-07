@@ -19,7 +19,7 @@ class BitcoinEndpoint(Resource):
         "price_close": fields.Float(required=True),
     }
 
-    @use_args(historical_args, location="query")
+    @use_args(add_args, location="query")
     def put(self, args) -> Response:
         price_open = request.args.get("price_open")
         price_close = request.args.get("price_close")
