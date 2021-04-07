@@ -24,18 +24,100 @@
   <body style="background-color: black;">
 
 
-    <div class="container">
+    <div class="container" id="home">
       <div class="row">
         <ul class="menu">
-          <li class="menu-item"><a class="active" href="index.html">Bitcoin</a></li>
-          <li class="menu-item"><a href="https://www.youtube.com/watch?v=o0u4M6vppCI">Dogecoin</a></li>
-          <li class="menu-item"><a href="https://www.youtube.com/watch?v=Gx9OlBM8Sso">Ethereum</a></li>
+          <li class="menu-item"><a class="active" href="#home" onclick="displayBit()">Bitcoin</a></li>
+          <li class="menu-item"><a class="active" href="#home" onclick="displayDoge()">Dogecoin</a></li>
+          <li class="menu-item"><a class="active" href="#home" onclick="displayEther()">Ethereum</a></li>
         </ul>
       </div>
-      <div class="row">
-        <div class="col-sm-8">
-          <canvas id="chart" width=100% height=60%></canvas>
-          <script src="{{url_for('static', filename='CCGraph.js')}}"></script>
+
+      <div class="cryptocharts">
+        <script>
+          function displayBit(){
+            var B = document.getElementById("bit");
+            var D = document.getElementById("doge");
+            var E = document.getElementById("ether");
+
+           if (B.style.display == "none"){
+              B.style.display = "block";
+              D.style.display = "none";
+              E.style.display = "none";
+              document.querySelector(".bitcnv").id="chart";
+              document.querySelector(".dogecnv").id="temp";
+              document.querySelector(".ethercnv").id="temp";
+              document.getElementById("chart").remove();
+              let canvas = document.createElement('canvas');
+              canvas.setAttribute('id','chart');
+              canvas.setAttribute('class','bitcnv');
+              canvas.setAttribute('width','100%');
+              canvas.setAttribute('height','60%');
+              document.querySelector('#bit-div').appendChild(canvas);
+              cb = new ChartBuilder(INTERVAL)
+              cb.fetchData(url).then(res => {
+              cb.cleanData(res)
+              })
+            }
+          }
+          function displayDoge(){
+            var B = document.getElementById("bit");
+            var D = document.getElementById("doge");
+            var E = document.getElementById("ether");
+
+            if (D.style.display == "none"){
+              D.style.display = "block";
+              B.style.display = "none";
+              E.style.display = "none";
+              document.querySelector(".bitcnv").id="temp";
+              document.querySelector(".dogecnv").id="chart";
+              document.querySelector(".ethercnv").id="temp";
+              document.getElementById("chart").remove();
+              let canvas = document.createElement('canvas');
+              canvas.setAttribute('id','chart');
+              canvas.setAttribute('class','dogecnv');
+              canvas.setAttribute('width','100%');
+              canvas.setAttribute('height','60%');
+              document.querySelector('#doge-div').appendChild(canvas);
+              cb = new ChartBuilder(INTERVAL)
+              cb.fetchData(url).then(res => {
+              cb.cleanData(res)
+              })
+            }
+          }
+          function displayEther(){
+            var B = document.getElementById("bit");
+            var D = document.getElementById("doge");
+            var E = document.getElementById("ether");
+            if (E.style.display == "none"){
+              E.style.display = "block";
+              B.style.display = "none";
+              D.style.display = "none";
+              document.querySelector(".bitcnv").id="temp";
+              document.querySelector(".dogecnv").id="temp";
+              document.querySelector(".ethercnv").id="chart";
+              document.getElementById( "chart" ).remove();
+              let canvas = document.createElement('canvas');
+              canvas.setAttribute('id','chart');
+              canvas.setAttribute('class','ethercnv');
+              canvas.setAttribute('width','100%');
+              canvas.setAttribute('height','60%');
+              document.querySelector('#ether-div').appendChild(canvas);
+              cb = new ChartBuilder(INTERVAL)
+              cb.fetchData(url).then(res => {
+              cb.cleanData(res)
+              })
+            }
+          }
+        </script>
+      <div id="bit" style="display:block">
+        <div class="row">
+          <div class="col-sm-8" id="bit-div">
+              <canvas class="bitcnv"id="chart" width=100% height=60%></canvas>
+          </div>
+          <div class="col-sm-4">
+            <img src="news.jfif" alt="bit news" width=100% height=100%/>
+          </div>
         </div>
         <div class="col-sm-4">
            <h5>
@@ -54,6 +136,21 @@
 	  <p><a href={{ info.URL5 }}>{{ info.title5 }}</a></p>
         </div>
       </div>
+      <div id="ether" style="display:none">
+        <div class="row">
+          <div class="col-sm-8" id="ether-div">
+            <canvas class="ethercnv" id="chart3" width=100% height=60%></canvas>
+          </div>
+          <div class="col-sm-4">
+            <img src="news.jfif" alt="ether news" width=100% height=100%/>
+          </div>
+        </div>
+      </div>
+
+      <script src="{{url_for('static', filename='CCGraph.js')}}"></script>
+
+    </div>
+
 
       <div class="row">
 
@@ -163,11 +260,8 @@
         }
         function display(){
           var T = document.getElementById("cal");
-          console.log(T.style.display);
           if (T.style.display == "block"){
-            console.log("t style changed");
             T.style.display = "none";
-            console.log(T.style.display);
           }
           else if (T.style.display == "none"){
             T.style.display = "block";
