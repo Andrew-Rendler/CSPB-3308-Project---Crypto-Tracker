@@ -1,4 +1,3 @@
-var ctx = document.getElementById('myChart');
 var API_KEY = "15bbc2af04315d0d116d7a99909e23d0a026a0ebf729cb0033d82295b3748d6f";
 var INTERVAL = 100
 var URL_FRAGMENT = `https://min-api.cryptocompare.com/data/v2/histoday?fsym=BTC&tsym=USD&limit=${INTERVAL}`;
@@ -7,12 +6,13 @@ var T = 1000000000000;
 var priceList = [];
 var dates = [];
 
+
 class ChartBuilder {
-  constructor(interval) {
+  constructor(INTERVAL) {
     this.priceList = []
     this.dates = []
     this.cryDataDay = []
-    this.interval = interval;
+    this.INTERVAL = INTERVAL;
     this.ctx = document.getElementById('chart').getContext('2d')
     this.ctx.canvas.width = 1000;
     this.ctx.canvas.height = 600;
@@ -41,7 +41,7 @@ class ChartBuilder {
   }
 
   cleanData(obj) {
-    console.log("in here", obj)
+    //console.log("in here", obj)
     let avgVol = 0;
     let avgPrice = 0;
     let priceOpen = 0;
@@ -54,7 +54,7 @@ class ChartBuilder {
     let dchange = this.dollarChange(price, yesterday);
     let mcap = this.marketCap(price);
 
-    for (let j = 0; j <= this.interval; j++) {
+    for (let j = 0; j <= this.INTERVAL; j++) {
       let tempVol = obj['Data']['Data'][j]['volumeto']
       avgVol = avgVol + tempVol
     }
@@ -69,29 +69,46 @@ class ChartBuilder {
 
     avgPrice = Math.floor(avgPrice / 7);
 
-    let priceInner = `<h2>$${price} </h2>`;
-    let dchangeInner = `<h3><span class ="change">${dchange}</span></h3>`;
+    let priceInner = `<h2>$${price.toFixed(2)} </h2>`;
+    let dchangeInner = `<h3><span class ="change">${dchange.toFixed(2)}</span></h3>`;
     let changeInner = `<h3><span class ="change">${change.toFixed(2)}%</span></h3>`;
-    let mcapInner = `<h3>${mcap} </h3>`;
+    let mcapInner = `<h3>$${mcap.toFixed(3)}T </h3>`;
     let avgVolInner = `<h3>${avgVol} </h3>`;
     let avgPriceInner = `<h3>$${avgPrice}</h3>`;
 
+    if (document.querySelector(".dogecnv").id == "chart"){
+      this.addHtml(".price", `<h2>$DOGE.00 </h2>`)
+      this.addHtml(".change", `<h3><span class ="change">+DOGE.00</span></h3>`)
+      this.addHtml(".perChange",`<h3><span class ="change">DOGE%</span></h3>`)
+      this.addHtml(".marketCap",`<h3>$dogeT </h3>`)
+      this.addHtml(".avgVol", `<h3>DOGE </h3>`)
+      this.addHtml(".avgPrice", `<h3>$DOGE</h3>`)
+    }
+    else if (document.querySelector(".ethercnv").id == "chart"){
+      this.addHtml(".price", `<h2>$ETHER.00 </h2>`)
+      this.addHtml(".change", `<h3><span class ="change">+ETHER.00</span></h3>`)
+      this.addHtml(".perChange",`<h3><span class ="change">ETHER%</span></h3>`)
+      this.addHtml(".marketCap",`<h3>$etherT </h3>`)
+      this.addHtml(".avgVol", `<h3>ETHER </h3>`)
+      this.addHtml(".avgPrice", `<h3>$ETHER</h3>`)
+    }
+    else{
+      this.addHtml(".price", priceInner)
+      this.addHtml(".change", dchangeInner)
+      this.addHtml(".perChange", changeInner)
+      this.addHtml(".marketCap", mcapInner)
+      this.addHtml(".avgVol", avgVolInner)
+      this.addHtml(".avgPrice", avgPriceInner)
+    }
 
-    this.addHtml(".price", priceInner)
-    this.addHtml(".change", dchangeInner)
-    this.addHtml(".perChange", changeInner)
-    this.addHtml(".marketCap", mcapInner)
-    this.addHtml(".avgVol", avgVolInner)
-    this.addHtml(".avgPrice", avgPriceInner)
-
-    for (var i = 0; i <= this.interval; i++) {
+    for (var i = 0; i <= this.INTERVAL; i++) {
       priceList.push(obj['Data']['Data'][i]['close']);
       var date = new Date(obj['Data']['Data'][i]['time'] * 1000);
       date = date.getUTCMonth() + 1 + "/" + date.getUTCDate();
       this.dates.push(date);
     }
 
-    for (var i = 0; i <= this.interval; i++) {
+    for (var i = 0; i <= this.INTERVAL; i++) {
       priceOpen = (obj['Data']['Data'][i]['open']);
       priceClose = (obj['Data']['Data'][i]['close']);
       priceLow = (obj['Data']['Data'][i]['low']);
@@ -126,8 +143,7 @@ class ChartBuilder {
   }
 }
 
-
 cb = new ChartBuilder(INTERVAL)
 cb.fetchData(url).then(res => {
-  cb.cleanData(res)
+cb.cleanData(res)
 })
