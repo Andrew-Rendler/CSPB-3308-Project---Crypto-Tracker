@@ -12,6 +12,7 @@ from flask_restful import Api
 from .CryptoCompareAPI import CryptoCompareAPI
 from .ErrorHandler import ErrorHandler
 from .CryptoData import CryptoData
+from .CryptoNews import CryptoNews
 
 #!!important
 ##UNCOMMENT TO RUN ON SERVER
@@ -69,7 +70,7 @@ def create_app(test_config=None):
         #   - multi argument: expr_1+expr_2
         # pass an empty dict if there are no endpoint args
         # res = cryptocompare_api.api_call("ratelimit+all", {})
-        return render_template("index.html")
+        return render_template("index.html",info=CryptoNews.getData())
         # pass a dict with endpoint args
         # kwargs = {"coin": "BTC", "currency": "USD", "num_entries": "30"}
         # res = cryptocompare_api.api_call("historical+daily", kwargs)
@@ -81,6 +82,10 @@ def create_app(test_config=None):
         dic = {}
         dic = cryptodata.getDic()
         return render_template("test.html", info=dic)
+    
+      @app.route("/test2")
+    def test2():
+        return render_template("test.html", info=CryptoNews.getData())
 
     @app.route("/calc")
     def calc():
