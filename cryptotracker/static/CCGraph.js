@@ -49,7 +49,6 @@ class ChartBuilder {
   }
 
   cleanData(obj) {
-    console.log("in here", obj)
     this.cryDataDay = [];
     let avgVol = 0;
     let avgPrice = 0;
