@@ -64,7 +64,7 @@ class ChartBuilder {
     let dchange = this.dollarChange(price, yesterday);
     let mcap = this.marketCap(price);
 
-    for (let j = 0; j <= this.INTERVAL; j++) {
+    for (let j = 0; j <= this.interval; j++) {
       let tempVol = obj['Data']['Data'][j]['volumeto']
       avgVol = avgVol + tempVol
     }
