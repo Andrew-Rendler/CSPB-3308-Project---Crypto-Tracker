@@ -92,7 +92,6 @@ class ChartBuilder {
     this.addHtml(".marketCap", mcapInner)
     this.addHtml(".avgVol", avgVolInner)
     this.addHtml(".avgPrice", avgPriceInner)
-  
 
     for (var i = 0; i <= this.interval; i++) {
       priceOpen = (obj['Data']['Data'][i]['open']);

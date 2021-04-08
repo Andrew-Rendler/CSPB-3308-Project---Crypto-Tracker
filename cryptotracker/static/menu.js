@@ -11,7 +11,6 @@ var storeval = {
   ".marketCap": "doge",
   ".avgVol": "doge",
   ".avgPrice": "doge",
-  ".news": "DOGE NEWS"
 };
 
 function displayBit() {
