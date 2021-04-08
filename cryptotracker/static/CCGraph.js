@@ -11,6 +11,7 @@ var NUM_DOGE = 129090000000
 var NUM_BTC = 18658650
 var NUM_ETHER = 115360000
 
+
 class ChartBuilder {
   constructor(interval) {
     this.cryDataDay = []
@@ -63,7 +64,7 @@ class ChartBuilder {
     let dchange = this.dollarChange(price, yesterday);
     let mcap = this.marketCap(price);
 
-    for (let j = 0; j <= this.interval; j++) {
+    for (let j = 0; j <= this.INTERVAL; j++) {
       let tempVol = obj['Data']['Data'][j]['volumeto']
       avgVol = avgVol + tempVol
     }
