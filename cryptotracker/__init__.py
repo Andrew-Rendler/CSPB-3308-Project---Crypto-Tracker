@@ -82,8 +82,8 @@ def create_app(test_config=None):
         dic = {}
         dic = cryptodata.getDic()
         return render_template("test.html", info=dic)
-    
-      @app.route("/test2")
+
+    @app.route("/test2")
     def test2():
         return render_template("test.html", info=CryptoNews.getData())
 
