@@ -1,41 +1,81 @@
 /*The container*/
+body{
+  padding-top:60px;
+}
 .menu {
+  overflow: hidden;
   list-style-type: none;
   margin: 0;
   padding: 0;
-  overflow: hidden;
-  background-color: #000000;
-  border-style: solid;
-  height: 10%;
+  background-color: #111122;
+  position: fixed;
+  top: 0;
 
 }
+.theme{
+  float: right;
+  margin-right: 35%;
+  border: 2px solid;
+  border-radius: 15px;
+  text-decoration: none;
+  padding-left: 2px;
+  padding-right: 2px;
+  font-family: Quicksand;
+  font-weight: 900;
+  font-size: .7rem;
+  color: #dddddd
+
+}
+.theme:hover{
+  color: #ff6666 !important;
+}
+
 
 /*There are 3 items in my menus so this defines the width and display*/
 .menu-item
 {
-  float: left;
-  width: 33.3%;
+  float:left;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-left: 20px;
+  margin-right: 50px;
+  margin-top: 10px;
+  margin-bottom: 5px;
 }
 
 /*This sets the color and text properties for the items on the menu*/
 .menu-item a
 {
   display: block;
-  color: #ffffff;
-  font-family: Georgia, serif;
+  font-family: Quicksand;
   text-align: center;
-  padding-top: 5%;
+  padding-top: 0px  ;
   text-decoration: none;
+  color: #dddddd;
+  font-weight: bold;
 }
-
+.hr{
+  color: white;
+}
+.news a{
+  text-decoration: none;
+  font-family: Prata;
+  color: white;
+}
+.news a:hover{
+  color: #ff6666 !important;
+}
 /*changes the color when the item is hovered overflow*/
 .menu-item a:hover
 {
-  color: #ff0000;
+  color: #ff6666 !important;
 }
 
 .price{
-  color: green;
+  color: #eeeeff;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .info{
@@ -43,13 +83,15 @@
 }
 
 .change{
-  color: green;
+  color: #22AA55;
   font-size: 1.5rem;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .perChange{
-  color: green;
+  color: #22AA55;
   font-size: 1.5rem;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .marketCap{
@@ -66,13 +108,25 @@
 
 /*from chart js*/
 * {
-	font-family: Sans-Serif;
+	font-family: sans-serif;
 }
 
-h1 {
+.headings {
+  font-family: 'Quicksand';
+  font-weight: bold;
+	font-size:1em;
+  color: #777777
+
+
+}
+.subheading {
+	font-size:.8em;
+  color: #888888
+}
+h2 {
 	font-size: 1.5em;
 }
-
-h2 {
-	font-size: 1.25em;
+.data{
+  font-family: 'Quicksand', sans-serif;
+  color: #eeeeff
 }

@@ -15,6 +15,20 @@ var storeval = {
 
 function displayBit() {
   var crypt = document.querySelector(".bit")
+  var theme = document.querySelector(".theme").innerHTML;
+  var y = document.querySelectorAll(".active")
+  for (var i = 0; i < 3; i++){
+    if (y[i].id == "bitbtn"){
+      y[i].style.color = "#ff6666";
+    }
+    else if(theme == "Dark Theme"){
+      y[i].style.color = "black";
+    }
+    else{
+      y[i].style.color = "white";
+    }
+
+  }
   if (crypt.id == "bitid"){
     return
   }
@@ -48,6 +62,20 @@ function displayBit() {
 
 function displayDoge() {
   var crypt = document.querySelector(".bit")
+  var theme = document.querySelector(".theme").innerHTML;
+  var y = document.querySelectorAll(".active")
+  for (var i = 0; i < 3; i++){
+    if (y[i].id == "dogebtn"){
+      y[i].style.color = "#ff6666";
+    }
+    else if(theme == "Dark Theme"){
+      y[i].style.color = "black";
+    }
+    else{
+      y[i].style.color = "white";
+    }
+
+  }
   if (crypt.id == "dogeid"){
     return
   }
@@ -89,6 +117,20 @@ function displayDoge() {
 
 function displayEther(){
   var crypt = document.querySelector(".bit")
+  var theme = document.querySelector(".theme").innerHTML;
+  var y = document.querySelectorAll(".active")
+  for (var i = 0; i < 3; i++){
+    if (y[i].id == "etherbtn"){
+      y[i].style.color = "#ff6666";
+    }
+    else if(theme == "Dark Theme"){
+      y[i].style.color = "black";
+    }
+    else{
+      y[i].style.color = "white";
+    }
+
+  }
   if (crypt.id == "etherid"){
     return
   }
@@ -125,5 +167,59 @@ function displayEther(){
   else{
     cb.fillHTML(etherval)
     cb.fillChart(etherlist)
+  }
+}
+
+function theme(){
+  var theme = document.querySelector(".theme").innerHTML;
+  if (theme == "Light Theme"){
+    document.getElementById("body").style.backgroundColor = "white";
+    document.querySelector(".theme").innerHTML = "Dark Theme";
+    document.querySelector(".menu").style.backgroundColor = "white";
+    document.querySelector(".price").style.color = "black";
+    var x = document.querySelectorAll(".data");
+    for (var i =0; i < 3; i++){
+      x[i].style.color = "black";
+    }
+    var y = document.querySelectorAll(".active")
+    for (var i =0; i < 4; i++){
+      y[i].style.color = "black";
+    }
+    var z = document.querySelectorAll(".headline")
+    for (var i =0; i < 5; i++){
+      z[i].style.color = "black";
+    }
+    var a = document.querySelectorAll(".hr")
+    for (var i =0; i < 4; i++){
+      a[i].style.color = "black";
+    }
+    document.querySelector(".output").style.color = "black";
+    document.querySelector(".output").style.backgroundColor = "white";
+
+  }
+  else if (theme == "Dark Theme"){
+    document.getElementById("body").style.backgroundColor = "#111122"
+    document.querySelector(".theme").innerHTML = "Light Theme"
+    document.querySelector(".menu").style.backgroundColor = "#111122"
+    document.querySelector(".price").style.color = "#eeeeff";
+    var x = document.querySelectorAll(".data");
+    for (var i =0; i < 3; i++){
+      x[i].style.color = "#eeeeff";
+    }
+    var y = document.querySelectorAll(".active")
+    for (var i =0; i < 4; i++){
+      y[i].style.color = "#dddddd";
+    }
+    var z = document.querySelectorAll(".headline")
+    for (var i =0; i < 5; i++){
+      z[i].style.color = "white";
+    }
+    var a = document.querySelectorAll(".hr")
+    for (var i =0; i < 4; i++){
+      a[i].style.color = "white";
+    }
+    document.querySelector(".output").style.color = "white";
+    document.querySelector(".output").style.backgroundColor = "black";
+
   }
 }
