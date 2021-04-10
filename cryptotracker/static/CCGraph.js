@@ -79,7 +79,6 @@ class ChartBuilder {
     let mcap = this.marketCap(price);
 
     for (let j = this.interval; j > this.interval - 30; j--) {
-      console.log(obj['Data']['Data'][j]['volumeto'])
       let tempVol = obj['Data']['Data'][j]['volumeto']
       avgVol = avgVol + tempVol
     }
@@ -193,7 +192,7 @@ class ChartBuilder {
         datasets: [{
           label: 'Bitcoin',
           data: this.cryDataDay,
-        }],
+        }]
       }
     });
   }
