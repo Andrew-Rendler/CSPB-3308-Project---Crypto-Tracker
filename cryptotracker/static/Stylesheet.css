@@ -2,32 +2,55 @@
 body{
   padding-top:60px;
 }
+
 .menu {
   overflow: hidden;
   list-style-type: none;
   margin: 0;
   padding: 0;
-  background-color: #111122;
   position: fixed;
   top: 0;
 
 }
+
 .theme{
   float: right;
   margin-right: 35%;
-  border: 2px solid;
   border-radius: 15px;
   text-decoration: none;
-  padding-left: 2px;
-  padding-right: 2px;
   font-family: Quicksand;
   font-weight: 900;
   font-size: .7rem;
-  color: #dddddd
-
+  padding: 4px;
 }
 .theme:hover{
   color: #ff6666 !important;
+}
+
+.theme-dark {
+  background-color: rgb(17, 17, 34) !important;
+  color: white !important;
+}
+
+.theme-light {
+  background-color: white !important;
+  color: rgb(17, 17, 34) !important;
+}
+
+.light {
+  background-color: white;
+}
+
+.dark {
+  background-color: rgb(17, 17, 34);
+}
+
+.light-text {
+  color: black;
+}
+
+.dark-text {
+  color: white;
 }
 
 
@@ -53,16 +76,18 @@ body{
   text-align: center;
   padding-top: 0px  ;
   text-decoration: none;
-  color: #dddddd;
   font-weight: bold;
 }
 .hr{
   color: white;
 }
+.news {
+  height: 500px;
+  overflow-y: scroll;
+}
 .news a{
   text-decoration: none;
   font-family: Prata;
-  color: white;
 }
 .news a:hover{
   color: #ff6666 !important;
@@ -74,12 +99,7 @@ body{
 }
 
 .price{
-  color: #eeeeff;
   font-family: 'Quicksand', sans-serif;
-}
-
-.info{
-  color: white;
 }
 
 .change{
@@ -92,18 +112,6 @@ body{
   color: #22AA55;
   font-size: 1.5rem;
   font-family: 'Quicksand', sans-serif;
-}
-
-.marketCap{
-  color: white;
-}
-
-.avgVol{
-  color: white;
-}
-
-.avgPrice{
-  color: white;
 }
 
 /*from chart js*/
@@ -128,5 +136,4 @@ h2 {
 }
 .data{
   font-family: 'Quicksand', sans-serif;
-  color: #eeeeff
 }
