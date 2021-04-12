@@ -10,7 +10,7 @@ body{
   padding: 0;
   position: fixed;
   top: 0;
-
+  background-color: #111122;
 }
 
 .theme{
@@ -43,6 +43,7 @@ body{
 
 .dark {
   background-color: rgb(17, 17, 34);
+  color: white;
 }
 
 .light-text {
