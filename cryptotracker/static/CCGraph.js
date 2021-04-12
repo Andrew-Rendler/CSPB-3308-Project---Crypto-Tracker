@@ -32,7 +32,9 @@ class ChartBuilder {
     var pchange = ((num1 - num2) / num2 * 100)
     if (pchange < 0){
       document.querySelector(".perChange").style.color = "#FF3333"
+      return pchange.toFixed(2)
     }
+    document.querySelector(".perChange").style.color = "#22AA55"
     return pchange.toFixed(2)
   }
 
@@ -44,13 +46,15 @@ class ChartBuilder {
         return (x.toFixed(3));
       }
       else {
+        document.querySelector(".change").style.color = "#22AA55"
         return "+" + (x.toFixed(3));
       }
     }
     else if (x < 0) {
       document.querySelector(".change").style.color = "#FF3333"
-      return (x).toLocaleString('en-US', {minmumFractionDigits: 2, maximumFractionDigits: 2});
+      return (x).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
     }
+    document.querySelector(".change").style.color = "#22AA55"
     return "+" + (x).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
   }
 
@@ -118,7 +122,7 @@ class ChartBuilder {
       priceClose = (obj['Data']['Data'][i]['close']);
       priceLow = (obj['Data']['Data'][i]['low']);
       priceHigh = (obj['Data']['Data'][i]['high']);
-      date = (( obj['Data']['Data'][i]['time']) * 1000)
+      date = (( obj['Data']['Data'][i]['time']+86400) * 1000)
       if (i == this.interval){
         date = Date.now()
       }
