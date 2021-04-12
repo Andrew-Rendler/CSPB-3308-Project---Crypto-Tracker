@@ -348,8 +348,8 @@ const globalOpts = Chart.Chart.defaults;
 
 globalOpts.elements.financial = {
 	color: {
-		up: 'rgba(80, 160, 115, 1)',
-		down: 'rgba(215, 85, 65, 1)',
+		up: 'rgba(65, 200, 115, 1)',
+		down: 'rgba(200, 20, 40, 1)',
 		unchanged: 'rgba(90, 90, 90, 1)',
 	}
 };
@@ -440,7 +440,7 @@ class CandlestickElement extends FinancialElement {
 
 		const {x, open, high, low, close} = me;
 
-		let borderColors = me.borderColor;
+		let borderColors = "#777777";
 		if (typeof borderColors === 'string') {
 			borderColors = {
 				up: borderColors,

@@ -29,15 +29,33 @@ class ChartBuilder {
   }
 
   percentChange(num1, num2) {
-    return ((num1 - num2) / num2 * 100).toFixed(2)
+    var pchange = ((num1 - num2) / num2 * 100)
+    if (pchange < 0){
+      document.querySelector(".perChange").style.color = "#FF3333"
+      return pchange.toFixed(2)
+    }
+    document.querySelector(".perChange").style.color = "#22AA55"
+    return pchange.toFixed(2)
   }
 
   dollarChange(num1, num2) {
     var x = num1 - num2;
-    if (x < 0) {
-      return x.toFixed(2);
+    if (document.querySelector(".bit").id == "dogeid"){
+      if (x < 0){
+        document.querySelector(".change").style.color = "#FF3333"
+        return (x.toFixed(3));
+      }
+      else {
+        document.querySelector(".change").style.color = "#22AA55"
+        return "+" + (x.toFixed(3));
+      }
     }
-    return "+" + x.toFixed(2);
+    else if (x < 0) {
+      document.querySelector(".change").style.color = "#FF3333"
+      return (x).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    }
+    document.querySelector(".change").style.color = "#22AA55"
+    return "+" + (x).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
   }
 
   marketCap(num1) {
@@ -64,12 +82,12 @@ class ChartBuilder {
     let dchange = this.dollarChange(price, yesterday);
     let mcap = this.marketCap(price);
 
-    for (let j = 0; j <= this.interval; j++) {
+    for (let j = this.interval; j > this.interval - 30; j--) {
       let tempVol = obj['Data']['Data'][j]['volumeto']
       avgVol = avgVol + tempVol
     }
 
-    avgVol = Math.floor(avgVol / INTERVAL);
+    avgVol = (avgVol / 30).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits: 2});
 
 
     for (let j = INTERVAL; j > INTERVAL - 7; j--) {
@@ -77,13 +95,19 @@ class ChartBuilder {
       avgPrice = avgPrice + tempPrice
     }
 
-    avgPrice = Math.floor(avgPrice / 7);
+    avgPrice = (avgPrice / 7).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
 
-    let priceInner = `$${price.toFixed(2)}`;
+    let priceInner = '0'
+    if(document.querySelector(".bit").id == "dogeid"){
+      priceInner = `$${price.toFixed(4)}`;
+    }
+    else{
+      priceInner = `$${(price).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+    }
     let dchangeInner = `${dchange}`;
     let changeInner = `${change}%`;
     let mcapInner = `$${mcap}T`;
-    let avgVolInner = `${avgVol}`;
+    let avgVolInner = `$${avgVol}`;
     let avgPriceInner = `$${avgPrice}`;
 
     this.addHtml(".price", priceInner)
@@ -98,7 +122,11 @@ class ChartBuilder {
       priceClose = (obj['Data']['Data'][i]['close']);
       priceLow = (obj['Data']['Data'][i]['low']);
       priceHigh = (obj['Data']['Data'][i]['high']);
-      date = (obj['Data']['Data'][i]['time'] * 1000)
+      date = (( obj['Data']['Data'][i]['time']+86400) * 1000)
+      if (i == this.interval){
+        date = Date.now()
+      }
+
       let payload = {
         c: priceClose,
         h: priceHigh,
@@ -131,6 +159,14 @@ class ChartBuilder {
   fillHTML(obj){
     for (var i in obj){
       document.querySelector(i).innerHTML = obj[i]
+      if (i == ".perChange" && parseFloat(obj[i]) >= 0){
+        document.querySelector(i).style.color = "#22AA55"
+        document.querySelector(".change").style.color = "#22AA55"
+      }
+      else if (i == ".perChange" && parseFloat(obj[i]) < 0){
+        document.querySelector(i).style.color = "#FF3333"
+        document.querySelector(".change").style.color = "#FF3333"
+      }
     }
   }
 
