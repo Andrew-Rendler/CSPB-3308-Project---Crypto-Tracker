@@ -18,6 +18,7 @@ class CryptoModel(db.Model):
         return f"{self.name}:{self.price}"
 
 
+@dataclass
 class Bitcoin(db.Model):
     __tablename__ = "bitcoin_table"
 

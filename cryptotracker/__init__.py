@@ -1,5 +1,5 @@
 import os
-from flask import Flask, Response, render_template, request
+from flask import Flask, Response, render_template, request, jsonify
 from flask_restful import Api
 
 #!!important
@@ -87,7 +87,8 @@ def create_app(test_config=None):
     @app.route("/getbitcoin")
     def getbitcoin():
         btc = Bitcoin.query.all()
-        print(btc)
+        print(jsonify(btc))
+        return "btc"
 
     @app.route("/test2")
     def test2():
