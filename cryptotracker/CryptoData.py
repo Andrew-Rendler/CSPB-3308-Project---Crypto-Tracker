@@ -1,7 +1,7 @@
 try:
     from CryptoCompareAPI import CryptoCompareAPI
 except:
-    from .CryptoCompareAPI import CryptoCompareAPI  
+    from .CryptoCompareAPI import CryptoCompareAPI
 
 MILLION = 1000000
 BILLION = 1000000000
@@ -19,6 +19,7 @@ class CryptoData:
         cc_api = CryptoCompareAPI()
         payload = {"coin": "BTC", "currency": "USD", "num_entries": NUM_ENTRIES}
         res = cc_api.api_call("historical+daily", payload)
+        print(res)
         self.dataList = res.json()["Data"]["Data"]
         self.currentPrice = self.dataList[len(self.dataList) - 1]["close"]
         self.previousClose = self.dataList[len(self.dataList) - 2]["close"]
