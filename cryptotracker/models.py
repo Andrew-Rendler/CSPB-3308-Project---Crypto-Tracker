@@ -21,8 +21,8 @@ class Bitcoin(db.Model):
     high = db.Column(db.Float)
     open = db.Column(db.Float)
     low = db.Column(db.Float)
-    volumefrom: db.Column(db.Float)
-    volumeto: db.Column(db.Float)
+    volumefrom = db.Column(db.Float)
+    volumeto = db.Column(db.Float)
 
     def __init__(
         self,
@@ -69,8 +69,8 @@ class Ethereum(db.Model):
     high = db.Column(db.Float)
     open = db.Column(db.Float)
     low = db.Column(db.Float)
-    volumefrom: db.Column(db.Float)
-    volumeto: db.Column(db.Float)
+    volumefrom = db.Column(db.Float)
+    volumeto = db.Column(db.Float)
 
     def __init__(
         self,
@@ -117,8 +117,8 @@ class Dogecoin(db.Model):
     high = db.Column(db.Float)
     open = db.Column(db.Float)
     low = db.Column(db.Float)
-    volumefrom: db.Column(db.Float)
-    volumeto: db.Column(db.Float)
+    volumefrom = db.Column(db.Float)
+    volumeto = db.Column(db.Float)
 
     def __init__(
         self,
