@@ -13,17 +13,21 @@ req_parse = reqparse.RequestParser()
 class AddBitcoinEndpoint(Resource):
     def post(self) -> Response:
         args = req_parse.parse_args()
-        price_open = float(request.args.get("price_open"))
-        price_close = float(request.args.get("price_close"))
-        price_high = float(request.args.get("price_high"))
-        price_low = float(request.args.get("price_low"))
-        date = int(request.args.get("date"))
+        open = float(request.args.get("open"))
+        close = float(request.args.get("close"))
+        high = float(request.args.get("high"))
+        low = float(request.args.get("low"))
+        time = int(request.args.get("time"))
+        volumefrom = float(request.args.get("volumefrom"))
+        volumeto = float(request.args.get("volumeto"))
         btc = Bitcoin(
-            date=date,
-            price_open=price_open,
-            price_close=price_close,
-            price_high=price_high,
-            price_low=price_low,
+            time=time,
+            open=price_open,
+            closeclose=price_close,
+            high=price_high,
+            low=price_low,
+            volumefrom=volumefrom,
+            volumeto=volumeto,
         )
         db.session.add(btc)
         # handle errors here try/except
@@ -34,17 +38,21 @@ class AddBitcoinEndpoint(Resource):
 class AddEthereumEndpoint(Resource):
     def post(self) -> Response:
         args = req_parse.parse_args()
-        price_open = float(request.args.get("price_open"))
-        price_close = float(request.args.get("price_close"))
-        price_high = float(request.args.get("price_high"))
-        price_low = float(request.args.get("price_low"))
-        date = int(request.args.get("date"))
+        open = float(request.args.get("open"))
+        close = float(request.args.get("close"))
+        high = float(request.args.get("high"))
+        low = float(request.args.get("low"))
+        time = int(request.args.get("time"))
+        volumefrom = float(request.args.get("volumefrom"))
+        volumeto = float(request.args.get("volumeto"))
         eth = Ethereum(
-            date=date,
-            price_open=price_open,
-            price_close=price_close,
-            price_high=price_high,
-            price_low=price_low,
+            time=time,
+            open=price_open,
+            closeclose=price_close,
+            high=price_high,
+            low=price_low,
+            volumefrom=volumefrom,
+            volumeto=volumeto,
         )
         db.session.add(eth)
         db.session.commit()
@@ -54,17 +62,21 @@ class AddEthereumEndpoint(Resource):
 class AddDogecoinEndpoint(Resource):
     def post(self) -> Response:
         args = req_parse.parse_args()
-        price_open = float(request.args.get("price_open"))
-        price_close = float(request.args.get("price_close"))
-        price_high = float(request.args.get("price_high"))
-        price_low = float(request.args.get("price_low"))
-        date = int(request.args.get("date"))
+        open = float(request.args.get("open"))
+        close = float(request.args.get("close"))
+        high = float(request.args.get("high"))
+        low = float(request.args.get("low"))
+        time = int(request.args.get("time"))
+        volumefrom = float(request.args.get("volumefrom"))
+        volumeto = float(request.args.get("volumeto"))
         doge = Dogecoin(
-            date=date,
-            price_open=price_open,
-            price_close=price_close,
-            price_high=price_high,
-            price_low=price_low,
+            time=time,
+            open=price_open,
+            closeclose=price_close,
+            high=price_high,
+            low=price_low,
+            volumefrom=volumefrom,
+            volumeto=volumeto,
         )
         db.session.add(doge)
         db.session.commit()
