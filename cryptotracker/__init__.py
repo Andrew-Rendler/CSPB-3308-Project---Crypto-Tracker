@@ -88,7 +88,7 @@ def create_app(test_config=None):
     def getbitcoin():
         btc = Bitcoin.query.all()
         print(jsonify(btc))
-        return "btc"
+        return jsonify(btc)
 
     @app.route("/test2")
     def test2():
