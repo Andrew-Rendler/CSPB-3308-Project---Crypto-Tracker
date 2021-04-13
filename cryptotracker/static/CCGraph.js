@@ -206,7 +206,7 @@ class ChartBuilder {
 cb = new ChartBuilder(INTERVAL)
 cb.fetchData(url).then(res => {
   console.log(res);
-  res.data.data.forEach((data) => {
+  res.Data.Data.forEach((data) => {
     console.log(data)
   })
   let spinner = document.getElementById("bit-div")
