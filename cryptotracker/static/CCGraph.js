@@ -206,20 +206,19 @@ class ChartBuilder {
 cb = new ChartBuilder(INTERVAL)
 cb.fetchData(url).then(res => {
   console.log(res);
-  var xhr = new XMLHttpRequest();
-  xhr.open("POST", "http://143.198.112.124:5000/add-bitcoin?close=34312.82&low=32858&open=34252.08&time=1611964800&volumefrom=46326.31&volumeto=1574213551.44", true);
-  xhr.send();
-  // res.Data.Data.forEach((data) => {
-  //   payload = {}
-  //   payload.close = data.close
-  //   payload.high = data.high
-  //   payload.low = data.low
-  //   payload.open = data.open
-  //   payload.time = data.time
-  //   payload.volumefrom = data.volumefrom
-  //   payload.volumeto = data.volumeto
-
-  // })
+  res.Data.Data.forEach((data) => {
+    _close = "close=" + data.close
+    high = "&high=" + data.high
+    low = "&low=" + data.low
+    _open = "&open=" + data.open
+    time = "&time=" + data.time
+    volumefrom = "&volumefrom=" + data.volumefrom
+    volumeto = "&volumeto=" + data.volumeto
+    let url = "http://143.198.112.124:5000/add-bitcoin?" + _close + high + low + _open + time + volumefrom + volumeto
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", url, true);
+    xhr.send();
+  })
   let spinner = document.getElementById("bit-div")
   spinner.innerHTML = `<canvas class="bitcnv" id="chart" width=100% height=60%></canvas>`
   cb.ctx = document.getElementById('chart').getContext('2d')
