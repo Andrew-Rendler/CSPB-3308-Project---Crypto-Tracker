@@ -22,10 +22,10 @@ class AddBitcoinEndpoint(Resource):
         volumeto = float(request.args.get("volumeto"))
         btc = Bitcoin(
             time=time,
-            open=price_open,
-            closeclose=price_close,
-            high=price_high,
-            low=price_low,
+            open=open,
+            close=close,
+            high=high,
+            low=low,
             volumefrom=volumefrom,
             volumeto=volumeto,
         )
@@ -47,10 +47,10 @@ class AddEthereumEndpoint(Resource):
         volumeto = float(request.args.get("volumeto"))
         eth = Ethereum(
             time=time,
-            open=price_open,
-            closeclose=price_close,
-            high=price_high,
-            low=price_low,
+            open=open,
+            close=close,
+            high=high,
+            low=low,
             volumefrom=volumefrom,
             volumeto=volumeto,
         )
@@ -71,10 +71,10 @@ class AddDogecoinEndpoint(Resource):
         volumeto = float(request.args.get("volumeto"))
         doge = Dogecoin(
             time=time,
-            open=price_open,
-            closeclose=price_close,
-            high=price_high,
-            low=price_low,
+            open=open,
+            close=close,
+            high=high,
+            low=low,
             volumefrom=volumefrom,
             volumeto=volumeto,
         )

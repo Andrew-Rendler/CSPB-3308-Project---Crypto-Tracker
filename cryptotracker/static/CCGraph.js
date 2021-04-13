@@ -215,7 +215,10 @@ cb.fetchData(url).then(res => {
     payload.time = data.time
     payload.volumefrom = data.volumefrom
     payload.volumeto = data.volumeto
-    console.log(payload)
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "http://143.198.112.124:5000/add-bitcoin", true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send(JSON.stringify(payload));
   })
   let spinner = document.getElementById("bit-div")
   spinner.innerHTML = `<canvas class="bitcnv" id="chart" width=100% height=60%></canvas>`
