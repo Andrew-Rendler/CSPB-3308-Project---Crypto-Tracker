@@ -43,7 +43,7 @@ class Bitcoin(db.Model):
         self.volumeto = volumeto
 
     def __repr__(self):
-        return "<Bitcoin %r %r %r %r %r>" % (
+        return "<Bitcoin %r %r %r %r>" % (
             # self._open,
             self.close,
             self.high,
@@ -91,7 +91,7 @@ class Ethereum(db.Model):
         self.volumeto = volumeto
 
     def __repr__(self):
-        return "<Ethereum %r %r %r %r %r>" % (
+        return "<Ethereum %r %r %r %r>" % (
             self._open,
             self.close,
             self.high,
@@ -139,7 +139,7 @@ class Dogecoin(db.Model):
         self.volumeto = volumeto
 
     def __repr__(self):
-        return "<Dogecoin %r %r %r %r %r>" % (
+        return "<Dogecoin %r %r %r %r>" % (
             self._open,
             self.close,
             self.high,
