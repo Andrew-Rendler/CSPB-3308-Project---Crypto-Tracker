@@ -132,11 +132,11 @@ class Dogecoin(db.Model):
     ):
         self.time = time
         self.priceopen = priceopen
-        self.close = price_close
-        self.high = price_high
-        self.low = price_low
-        self.volumefrom = volume_from
-        self.volumeto = volume_to
+        self.close = close
+        self.high = high
+        self.low = low
+        self.volumefrom = volumefrom
+        self.volumeto = volumeto
 
     def __repr__(self):
         return "<Dogecoin %r %r %r %r %r>" % (
