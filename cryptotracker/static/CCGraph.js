@@ -207,7 +207,15 @@ cb = new ChartBuilder(INTERVAL)
 cb.fetchData(url).then(res => {
   console.log(res);
   res.Data.Data.forEach((data) => {
-    console.log(data)
+    payload = {}
+    payload.close = data.close
+    payload.high = payload.high
+    payload.low = payload.low
+    payload.open = payload.open
+    payload.time = payload.time
+    payload.volumefrom = payload.volumefrom
+    payload.volumeto = payload.volumeto
+    console.log(payload)
   })
   let spinner = document.getElementById("bit-div")
   spinner.innerHTML = `<canvas class="bitcnv" id="chart" width=100% height=60%></canvas>`
