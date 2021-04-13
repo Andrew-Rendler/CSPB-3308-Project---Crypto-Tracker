@@ -9,7 +9,7 @@ class Bitcoin(db.Model):
     __tablename__ = "bitcoin_table"
 
     time: str
-    _open: float
+    # _open: float
     close: float
     high: float
     low: float
@@ -19,7 +19,7 @@ class Bitcoin(db.Model):
     time = db.Column(db.Integer, primary_key=True, nullable=False)
     close = db.Column(db.Float)
     high = db.Column(db.Float)
-    _open = db.Column(db.Float)
+    # _open = db.Column(db.Float)
     low = db.Column(db.Float)
     volumefrom = db.Column(db.Float)
     volumeto = db.Column(db.Float)
@@ -27,7 +27,7 @@ class Bitcoin(db.Model):
     def __init__(
         self,
         time,
-        _open,
+        # _open,
         close,
         high,
         low,
@@ -35,7 +35,7 @@ class Bitcoin(db.Model):
         volumeto,
     ):
         self.time = time
-        self._open = _open
+        # self._open = _open
         self.close = close
         self.high = high
         self.low = low
@@ -44,7 +44,7 @@ class Bitcoin(db.Model):
 
     def __repr__(self):
         return "<Bitcoin %r %r %r %r %r>" % (
-            self._open,
+            # self._open,
             self.close,
             self.high,
             self.low,

@@ -14,17 +14,17 @@ class AddBitcoinEndpoint(Resource):
     def post(self) -> Response:
         args = req_parse.parse_args()
         print(request.args)
-        _open = float(request.args.get("open"))
+        # _open = float(request.args.get("open"))
         close = float(request.args.get("close"))
         high = float(request.args.get("high"))
         low = float(request.args.get("low"))
         time = int(request.args.get("time"))
         volumefrom = float(request.args.get("volumefrom"))
         volumeto = float(request.args.get("volumeto"))
-        print(_open)
+        # print(_open)
         btc = Bitcoin(
             time=time,
-            open=_open,
+            # open=_open,
             close=close,
             high=high,
             low=low,
