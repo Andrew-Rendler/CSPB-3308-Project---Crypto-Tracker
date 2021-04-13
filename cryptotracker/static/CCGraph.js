@@ -121,7 +121,7 @@ class ChartBuilder {
     this.addHtml(".avgPrice", avgPriceInner)
 
     for (var i = 0; i <= this.interval; i++) {
-      priceOpen = (obj[i]['open']);
+      priceOpen = (obj[i]['priceopen']);
       priceClose = (obj[i]['close']);
       priceLow = (obj[i]['low']);
       priceHigh = (obj[i]['high']);
