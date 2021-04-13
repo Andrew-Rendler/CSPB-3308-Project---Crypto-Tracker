@@ -211,7 +211,7 @@ class ChartBuilder {
 
 cb = new ChartBuilder(INTERVAL)
 cb.fetchData(url).then(res => {
-  console.log(data)
+  console.log(res)
   let spinner = document.getElementById("bit-div")
   spinner.innerHTML = `<canvas class="bitcnv" id="chart" width=100% height=60%></canvas>`
   cb.ctx = document.getElementById('chart').getContext('2d')
