@@ -9,7 +9,7 @@ class Bitcoin(db.Model):
     __tablename__ = "bitcoin_table"
 
     time: str
-    open: float
+    _open: float
     close: float
     high: float
     low: float
@@ -19,7 +19,7 @@ class Bitcoin(db.Model):
     time = db.Column(db.Integer, primary_key=True, nullable=False)
     close = db.Column(db.Float)
     high = db.Column(db.Float)
-    open = db.Column(db.Float)
+    _open = db.Column(db.Float)
     low = db.Column(db.Float)
     volumefrom = db.Column(db.Float)
     volumeto = db.Column(db.Float)
@@ -35,7 +35,7 @@ class Bitcoin(db.Model):
         volume_to,
     ):
         self.time = time
-        self.open = price_open
+        self._open = price_open
         self.close = price_close
         self.high = price_high
         self.low = price_low
@@ -44,7 +44,7 @@ class Bitcoin(db.Model):
 
     def __repr__(self):
         return "<Bitcoin %r %r %r %r %r>" % (
-            self.open,
+            self._open,
             self.close,
             self.high,
             self.low,
@@ -57,7 +57,7 @@ class Ethereum(db.Model):
     __tablename__ = "ethereum_table"
 
     time: str
-    open: float
+    _open: float
     close: float
     high: float
     low: float
@@ -67,7 +67,7 @@ class Ethereum(db.Model):
     time = db.Column(db.Integer, primary_key=True, nullable=False)
     close = db.Column(db.Float)
     high = db.Column(db.Float)
-    open = db.Column(db.Float)
+    _open = db.Column(db.Float)
     low = db.Column(db.Float)
     volumefrom = db.Column(db.Float)
     volumeto = db.Column(db.Float)
@@ -83,7 +83,7 @@ class Ethereum(db.Model):
         volume_to,
     ):
         self.time = time
-        self.open = price_open
+        self._open = price_open
         self.close = price_close
         self.high = price_high
         self.low = price_low
@@ -92,7 +92,7 @@ class Ethereum(db.Model):
 
     def __repr__(self):
         return "<Ethereum %r %r %r %r %r>" % (
-            self.open,
+            self._open,
             self.close,
             self.high,
             self.low,
@@ -105,7 +105,7 @@ class Dogecoin(db.Model):
     __tablename__ = "dogecoin_table"
 
     time: str
-    open: float
+    _open: float
     close: float
     high: float
     low: float
@@ -115,7 +115,7 @@ class Dogecoin(db.Model):
     time = db.Column(db.Integer, primary_key=True, nullable=False)
     close = db.Column(db.Float)
     high = db.Column(db.Float)
-    open = db.Column(db.Float)
+    _open = db.Column(db.Float)
     low = db.Column(db.Float)
     volumefrom = db.Column(db.Float)
     volumeto = db.Column(db.Float)
@@ -131,7 +131,7 @@ class Dogecoin(db.Model):
         volume_to,
     ):
         self.time = time
-        self.open = price_open
+        self._open = price_open
         self.close = price_close
         self.high = price_high
         self.low = price_low
@@ -140,7 +140,7 @@ class Dogecoin(db.Model):
 
     def __repr__(self):
         return "<Dogecoin %r %r %r %r %r>" % (
-            self.open,
+            self._open,
             self.close,
             self.high,
             self.low,
