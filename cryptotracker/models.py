@@ -37,7 +37,7 @@ class Bitcoin(db.Model):
         self.price_low = price_low
 
     def __repr__(self):
-        return "<Bitcoin %r>" % (
+        return "<Bitcoin %r %r %r %r %r>" % (
             self.price_open,
             self.price_close,
             self.price_high,
