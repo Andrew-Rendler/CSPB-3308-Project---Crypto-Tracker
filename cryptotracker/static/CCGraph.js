@@ -209,12 +209,12 @@ cb.fetchData(url).then(res => {
   res.Data.Data.forEach((data) => {
     payload = {}
     payload.close = data.close
-    payload.high = payload.high
-    payload.low = payload.low
-    payload.open = payload.open
-    payload.time = payload.time
-    payload.volumefrom = payload.volumefrom
-    payload.volumeto = payload.volumeto
+    payload.high = data.high
+    payload.low = data.low
+    payload.open = data.open
+    payload.time = data.time
+    payload.volumefrom = data.volumefrom
+    payload.volumeto = data.volumeto
     console.log(payload)
   })
   let spinner = document.getElementById("bit-div")
