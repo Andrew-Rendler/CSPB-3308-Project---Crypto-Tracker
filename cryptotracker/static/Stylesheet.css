@@ -138,3 +138,9 @@ h2 {
 .data{
   font-family: 'Quicksand', sans-serif;
 }
+
+#bit-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

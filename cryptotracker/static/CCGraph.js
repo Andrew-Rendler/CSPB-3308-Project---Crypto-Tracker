@@ -16,9 +16,6 @@ class ChartBuilder {
   constructor(interval) {
     this.cryDataDay = []
     this.interval = interval;
-    this.ctx = document.getElementById('chart').getContext('2d')
-    this.ctx.canvas.width = 1000;
-    this.ctx.canvas.height = 600;
     this.chart = null
   }
 
@@ -30,7 +27,7 @@ class ChartBuilder {
 
   percentChange(num1, num2) {
     var pchange = ((num1 - num2) / num2 * 100)
-    if (pchange < 0){
+    if (pchange < 0) {
       document.querySelector(".perChange").style.color = "#FF3333"
       return pchange.toFixed(2)
     }
@@ -40,8 +37,8 @@ class ChartBuilder {
 
   dollarChange(num1, num2) {
     var x = num1 - num2;
-    if (document.querySelector(".bit").id == "dogeid"){
-      if (x < 0){
+    if (document.querySelector(".bit").id == "dogeid") {
+      if (x < 0) {
         document.querySelector(".change").style.color = "#FF3333"
         return (x.toFixed(3));
       }
@@ -52,10 +49,10 @@ class ChartBuilder {
     }
     else if (x < 0) {
       document.querySelector(".change").style.color = "#FF3333"
-      return (x).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+      return (x).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     }
     document.querySelector(".change").style.color = "#22AA55"
-    return "+" + (x).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    return "+" + (x).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   }
 
   marketCap(num1) {
@@ -87,7 +84,7 @@ class ChartBuilder {
       avgVol = avgVol + tempVol
     }
 
-    avgVol = (avgVol / 30).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits: 2});
+    avgVol = (avgVol / 30).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
 
     for (let j = INTERVAL; j > INTERVAL - 7; j--) {
@@ -95,14 +92,14 @@ class ChartBuilder {
       avgPrice = avgPrice + tempPrice
     }
 
-    avgPrice = (avgPrice / 7).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    avgPrice = (avgPrice / 7).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
     let priceInner = '0'
-    if(document.querySelector(".bit").id == "dogeid"){
+    if (document.querySelector(".bit").id == "dogeid") {
       priceInner = `$${price.toFixed(4)}`;
     }
-    else{
-      priceInner = `$${(price).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+    else {
+      priceInner = `$${(price).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
     }
     let dchangeInner = `${dchange}`;
     let changeInner = `${change}%`;
@@ -122,8 +119,8 @@ class ChartBuilder {
       priceClose = (obj['Data']['Data'][i]['close']);
       priceLow = (obj['Data']['Data'][i]['low']);
       priceHigh = (obj['Data']['Data'][i]['high']);
-      date = (( obj['Data']['Data'][i]['time']+86400) * 1000)
-      if (i == this.interval){
+      date = ((obj['Data']['Data'][i]['time'] + 86400) * 1000)
+      if (i == this.interval) {
         date = Date.now()
       }
 
@@ -138,52 +135,52 @@ class ChartBuilder {
     }
   }
 
-  updateChart(){
-    for (let i = 0; i <= this.interval; i++){
+  updateChart() {
+    for (let i = 0; i <= this.interval; i++) {
       this.chart.data.datasets.forEach((dataset) => {
-          dataset.data.push(this.cryDataDay[i]);
+        dataset.data.push(this.cryDataDay[i]);
       });
     }
     this.chart.update();
   }
 
-  fillChart(list){
-    for (let i = 0; i <= this.interval; i++){
+  fillChart(list) {
+    for (let i = 0; i <= this.interval; i++) {
       this.chart.data.datasets.forEach((dataset) => {
-          dataset.data.push(list[i]);
+        dataset.data.push(list[i]);
       });
     }
     this.chart.update();
   }
 
-  fillHTML(obj){
-    for (var i in obj){
+  fillHTML(obj) {
+    for (var i in obj) {
       document.querySelector(i).innerHTML = obj[i]
-      if (i == ".perChange" && parseFloat(obj[i]) >= 0){
+      if (i == ".perChange" && parseFloat(obj[i]) >= 0) {
         document.querySelector(i).style.color = "#22AA55"
         document.querySelector(".change").style.color = "#22AA55"
       }
-      else if (i == ".perChange" && parseFloat(obj[i]) < 0){
+      else if (i == ".perChange" && parseFloat(obj[i]) < 0) {
         document.querySelector(i).style.color = "#FF3333"
         document.querySelector(".change").style.color = "#FF3333"
       }
     }
   }
 
-  popChart(){
+  popChart() {
     var list = []
-    for (let i = 0; i <= this.interval; i++){
+    for (let i = 0; i <= this.interval; i++) {
       this.chart.data.datasets.forEach((dataset) => {
-          list.push(dataset.data.pop());
+        list.push(dataset.data.pop());
       });
     }
     return list
   }
 
-  deleteChart(){
-    for (let i = 0; i <= this.interval; i++){
+  deleteChart() {
+    for (let i = 0; i <= this.interval; i++) {
       this.chart.data.datasets.forEach((dataset) => {
-          dataset.data.pop();
+        dataset.data.pop();
       });
     }
 
@@ -208,6 +205,11 @@ class ChartBuilder {
 
 cb = new ChartBuilder(INTERVAL)
 cb.fetchData(url).then(res => {
+  let spinner = document.getElementById("bit-div")
+  spinner.innerHTML = `<canvas class="bitcnv" id="chart" width=100% height=60%></canvas>`
+  cb.ctx = document.getElementById('chart').getContext('2d')
+  cb.ctx.canvas.width = 1000;
+  cb.ctx.canvas.height = 600;
   cb.cleanData(res)
   cb.buildChart(res)
 })
