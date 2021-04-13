@@ -24,7 +24,7 @@ class AddBitcoinEndpoint(Resource):
         print(_open)
         btc = Bitcoin(
             time=time,
-            _open=_open,
+            open=_open,
             close=close,
             high=high,
             low=low,

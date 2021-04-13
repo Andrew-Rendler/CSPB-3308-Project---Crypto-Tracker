@@ -27,20 +27,20 @@ class Bitcoin(db.Model):
     def __init__(
         self,
         time,
-        price_open,
-        price_close,
-        price_high,
-        price_low,
-        volume_from,
-        volume_to,
+        _open,
+        close,
+        high,
+        low,
+        volumefrom,
+        volumeto,
     ):
         self.time = time
-        self._open = price_open
-        self.close = price_close
-        self.high = price_high
-        self.low = price_low
-        self.volumefrom = volume_from
-        self.volumeto = volume_to
+        self._open = _open
+        self.close = close
+        self.high = high
+        self.low = low
+        self.volumefrom = volumefrom
+        self.volumeto = volumeto
 
     def __repr__(self):
         return "<Bitcoin %r %r %r %r %r>" % (
@@ -75,20 +75,20 @@ class Ethereum(db.Model):
     def __init__(
         self,
         time,
-        price_open,
-        price_close,
-        price_high,
-        price_low,
-        volume_from,
-        volume_to,
+        _open,
+        close,
+        high,
+        low,
+        volumefrom,
+        volumeto,
     ):
         self.time = time
-        self._open = price_open
-        self.close = price_close
-        self.high = price_high
-        self.low = price_low
-        self.volumefrom = volume_from
-        self.volumeto = volume_to
+        self._open = _open
+        self.close = close
+        self.high = high
+        self.low = low
+        self.volumefrom = volumefrom
+        self.volumeto = volumeto
 
     def __repr__(self):
         return "<Ethereum %r %r %r %r %r>" % (
@@ -123,20 +123,20 @@ class Dogecoin(db.Model):
     def __init__(
         self,
         time,
-        price_open,
-        price_close,
-        price_high,
-        price_low,
-        volume_from,
-        volume_to,
+        _open,
+        close,
+        high,
+        low,
+        volumefrom,
+        volumeto,
     ):
         self.time = time
-        self._open = price_open
-        self.close = price_close
-        self.high = price_high
-        self.low = price_low
-        self.volumefrom = volume_from
-        self.volumeto = volume_to
+        self._open = _open
+        self.close = close
+        self.high = high
+        self.low = low
+        self.volumefrom = volumefrom
+        self.volumeto = volumeto
 
     def __repr__(self):
         return "<Dogecoin %r %r %r %r %r>" % (
