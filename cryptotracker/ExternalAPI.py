@@ -14,7 +14,7 @@ class AddBitcoinEndpoint(Resource):
     def post(self) -> Response:
         args = req_parse.parse_args()
         print(request.args)
-        open = float(request.args.get("open"))
+        _open = float(request.args.get("open"))
         close = float(request.args.get("close"))
         high = float(request.args.get("high"))
         low = float(request.args.get("low"))
@@ -23,7 +23,7 @@ class AddBitcoinEndpoint(Resource):
         volumeto = float(request.args.get("volumeto"))
         btc = Bitcoin(
             time=time,
-            open=open,
+            open=_open,
             close=close,
             high=high,
             low=low,
@@ -40,7 +40,7 @@ class AddBitcoinEndpoint(Resource):
 class AddEthereumEndpoint(Resource):
     def post(self) -> Response:
         args = req_parse.parse_args()
-        open = float(request.args.get("open"))
+        _open = float(request.args.get("open"))
         close = float(request.args.get("close"))
         high = float(request.args.get("high"))
         low = float(request.args.get("low"))
@@ -49,7 +49,7 @@ class AddEthereumEndpoint(Resource):
         volumeto = float(request.args.get("volumeto"))
         eth = Ethereum(
             time=time,
-            open=open,
+            open=_open,
             close=close,
             high=high,
             low=low,
@@ -64,7 +64,7 @@ class AddEthereumEndpoint(Resource):
 class AddDogecoinEndpoint(Resource):
     def post(self) -> Response:
         args = req_parse.parse_args()
-        open = float(request.args.get("open"))
+        _open = float(request.args.get("open"))
         close = float(request.args.get("close"))
         high = float(request.args.get("high"))
         low = float(request.args.get("low"))
@@ -73,7 +73,7 @@ class AddDogecoinEndpoint(Resource):
         volumeto = float(request.args.get("volumeto"))
         doge = Dogecoin(
             time=time,
-            open=open,
+            open=_open,
             close=close,
             high=high,
             low=low,
