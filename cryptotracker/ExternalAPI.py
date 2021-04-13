@@ -13,7 +13,6 @@ req_parse = reqparse.RequestParser()
 class AddBitcoinEndpoint(Resource):
     def post(self) -> Response:
         args = req_parse.parse_args()
-        print(request.args)
         priceopen = float(request.args.get("open"))
         close = float(request.args.get("close"))
         high = float(request.args.get("high"))
@@ -21,7 +20,6 @@ class AddBitcoinEndpoint(Resource):
         time = int(request.args.get("time"))
         volumefrom = float(request.args.get("volumefrom"))
         volumeto = float(request.args.get("volumeto"))
-        print(priceopen)
         btc = Bitcoin(
             time=time,
             priceopen=priceopen,
@@ -32,7 +30,6 @@ class AddBitcoinEndpoint(Resource):
             volumeto=volumeto,
         )
         db.session.add(btc)
-        print(btc)
         # handle errors here try/except
         db.session.commit()
         return Response("success: 200", status=200, mimetype="application/json")

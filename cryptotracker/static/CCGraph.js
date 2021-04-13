@@ -1,11 +1,17 @@
 var API_KEY = "15bbc2af04315d0d116d7a99909e23d0a026a0ebf729cb0033d82295b3748d6f";
 var INTERVAL = 100
-var URL_FRAGMENT = `https://min-api.cryptocompare.com/data/v2/histoday?fsym=BTC&tsym=USD&limit=${INTERVAL}`;
-var URL_FRAGMENT_DOGE = `https://min-api.cryptocompare.com/data/v2/histoday?fsym=DOGE&tsym=USD&limit=${INTERVAL}`;
-var URL_FRAGMENT_ETHER = `https://min-api.cryptocompare.com/data/v2/histoday?fsym=ETH&tsym=USD&limit=${INTERVAL}`;
-var url = URL_FRAGMENT + "&api_key=" + API_KEY;
-var urlDoge = URL_FRAGMENT_DOGE + "&api_key=" + API_KEY;
-var urlEther = URL_FRAGMENT_ETHER + "&api_key=" + API_KEY;
+// var URL_FRAGMENT = `https://min-api.cryptocompare.com/data/v2/histoday?fsym=BTC&tsym=USD&limit=${INTERVAL}`;
+// var URL_FRAGMENT_DOGE = `https://min-api.cryptocompare.com/data/v2/histoday?fsym=DOGE&tsym=USD&limit=${INTERVAL}`;
+// var URL_FRAGMENT_ETHER = `https://min-api.cryptocompare.com/data/v2/histoday?fsym=ETH&tsym=USD&limit=${INTERVAL}`;
+
+// var url = URL_FRAGMENT + "&api_key=" + API_KEY;
+// var urlDoge = URL_FRAGMENT_DOGE + "&api_key=" + API_KEY;
+// var urlEther = URL_FRAGMENT_ETHER + "&api_key=" + API_KEY;
+
+var url = `http://143.198.112.124:5000/get-bitcoin`;
+var urlDoge = `http://143.198.112.124:5000/get-dogecoin`;
+var urlEther = `http://143.198.112.124:5000/get-ethereum`;
+
 var T = 1000000000000;
 var NUM_DOGE = 129090000000
 var NUM_BTC = 18658650
@@ -204,21 +210,8 @@ class ChartBuilder {
 }
 
 cb = new ChartBuilder(INTERVAL)
-cb.fetchData(urlDoge).then(res => {
-  console.log(res);
-  res.Data.Data.forEach((data) => {
-    _close = "close=" + data.close
-    high = "&high=" + data.high
-    low = "&low=" + data.low
-    _open = "&open=" + data.open
-    time = "&time=" + data.time
-    volumefrom = "&volumefrom=" + data.volumefrom
-    volumeto = "&volumeto=" + data.volumeto
-    let url = "http://143.198.112.124:5000/add-dogecoin?" + _close + high + low + _open + time + volumefrom + volumeto
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", url, true);
-    xhr.send();
-  })
+cb.fetchData(urlAPI).then(res => {
+  console.log(data)
   let spinner = document.getElementById("bit-div")
   spinner.innerHTML = `<canvas class="bitcnv" id="chart" width=100% height=60%></canvas>`
   cb.ctx = document.getElementById('chart').getContext('2d')

@@ -17,6 +17,7 @@ from .CryptoNews import CryptoNews
 #!!important
 ##UNCOMMENT TO RUN ON SERVER
 from .ExternalAPI import *
+from .InternalAPI import *
 
 # app context objects
 cryptocompare_api = CryptoCompareAPI()
@@ -44,6 +45,9 @@ def create_app(test_config=None):
     api.add_resource(AddBitcoinEndpoint, "/add-bitcoin")
     api.add_resource(AddEthereumEndpoint, "/add-ethereum")
     api.add_resource(AddDogecoinEndpoint, "/add-dogecoin")
+    api.add_resource(GetBitcoinEndpoint, "/get-bitcoin")
+    api.add_resource(GetEthereumEndpoint, "/get-ethereum")
+    api.add_resource(GetDogecoinEndpoint, "/get-dogecoin")
 
     if test_config is None:
         # load the instance config, if it exists, when not testing
