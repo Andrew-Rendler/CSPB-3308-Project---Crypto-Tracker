@@ -21,6 +21,7 @@ class AddBitcoinEndpoint(Resource):
         time = int(request.args.get("time"))
         volumefrom = float(request.args.get("volumefrom"))
         volumeto = float(request.args.get("volumeto"))
+        print(_open)
         btc = Bitcoin(
             time=time,
             open=_open,
