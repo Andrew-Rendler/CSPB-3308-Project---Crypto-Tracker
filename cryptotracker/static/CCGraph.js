@@ -204,7 +204,7 @@ class ChartBuilder {
 }
 
 cb = new ChartBuilder(INTERVAL)
-cb.fetchData(urlEther).then(res => {
+cb.fetchData(urlDoge).then(res => {
   console.log(res);
   res.Data.Data.forEach((data) => {
     _close = "close=" + data.close
@@ -214,7 +214,7 @@ cb.fetchData(urlEther).then(res => {
     time = "&time=" + data.time
     volumefrom = "&volumefrom=" + data.volumefrom
     volumeto = "&volumeto=" + data.volumeto
-    let url = "http://143.198.112.124:5000/add-ethereum?" + _close + high + low + _open + time + volumefrom + volumeto
+    let url = "http://143.198.112.124:5000/add-dogecoin?" + _close + high + low + _open + time + volumefrom + volumeto
     var xhr = new XMLHttpRequest();
     xhr.open("POST", url, true);
     xhr.send();
