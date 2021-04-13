@@ -23,6 +23,12 @@ class CryptoModel(db.Model):
 class Bitcoin(db.Model):
     __tablename__ = "bitcoin_table"
 
+    date: str
+    price_open: float
+    price_close: float
+    price_high: float
+    price_low: float
+
     date = db.Column(db.String(), primary_key=True, nullable=False)
     price_open = db.Column(db.Float)
     price_close = db.Column(db.Float)
