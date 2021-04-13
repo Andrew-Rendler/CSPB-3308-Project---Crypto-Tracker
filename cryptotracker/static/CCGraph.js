@@ -206,6 +206,7 @@ class ChartBuilder {
 cb = new ChartBuilder(INTERVAL)
 cb.fetchData(url).then(res => {
   console.log(res);
+  var xhr = new XMLHttpRequest();
   xhr.open("POST", "http://143.198.112.124:5000/add-bitcoin?close=34312.82&low=32858&open=34252.08&time=1611964800&volumefrom=46326.31&volumeto=1574213551.44", true);
   xhr.send();
   // res.Data.Data.forEach((data) => {
@@ -217,7 +218,6 @@ cb.fetchData(url).then(res => {
   //   payload.time = data.time
   //   payload.volumefrom = data.volumefrom
   //   payload.volumeto = data.volumeto
-  //   var xhr = new XMLHttpRequest();
 
   // })
   let spinner = document.getElementById("bit-div")
