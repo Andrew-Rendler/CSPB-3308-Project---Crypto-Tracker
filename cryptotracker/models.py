@@ -37,7 +37,13 @@ class Bitcoin(db.Model):
         self.price_low = price_low
 
     def __repr__(self):
-        return "<Bitcoin %r>" % self.price_open
+        return "<Bitcoin %r>" % (
+            self.price_open,
+            self.price_close,
+            self.price_high,
+            self.price_low,
+            self.date,
+        )
 
 
 class Ethereum(db.Model):
