@@ -218,6 +218,7 @@ cb.fetchData(url).then(res => {
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "http://143.198.112.124:5000/add-bitcoin", true);
     xhr.setRequestHeader('Content-Type', 'application/json');
+    console.log(payload)
     xhr.send(JSON.stringify(payload));
   })
   let spinner = document.getElementById("bit-div")
