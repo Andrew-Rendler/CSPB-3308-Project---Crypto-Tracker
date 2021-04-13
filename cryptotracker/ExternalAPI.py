@@ -30,6 +30,7 @@ class AddBitcoinEndpoint(Resource):
             volumeto=volumeto,
         )
         db.session.add(btc)
+        print(btc)
         # handle errors here try/except
         db.session.commit()
         return Response("success: 200", status=200, mimetype="application/json")
