@@ -14,17 +14,17 @@ class AddBitcoinEndpoint(Resource):
     def post(self) -> Response:
         args = req_parse.parse_args()
         print(request.args)
-        # _open = float(request.args.get("open"))
+        priceopen = float(request.args.get("open"))
         close = float(request.args.get("close"))
         high = float(request.args.get("high"))
         low = float(request.args.get("low"))
         time = int(request.args.get("time"))
         volumefrom = float(request.args.get("volumefrom"))
         volumeto = float(request.args.get("volumeto"))
-        # print(_open)
+        print(priceopen)
         btc = Bitcoin(
             time=time,
-            # open=_open,
+            priceopen=priceopen,
             close=close,
             high=high,
             low=low,
@@ -41,7 +41,7 @@ class AddBitcoinEndpoint(Resource):
 class AddEthereumEndpoint(Resource):
     def post(self) -> Response:
         args = req_parse.parse_args()
-        _open = float(request.args.get("open"))
+        priceopen = float(request.args.get("open"))
         close = float(request.args.get("close"))
         high = float(request.args.get("high"))
         low = float(request.args.get("low"))
@@ -50,7 +50,7 @@ class AddEthereumEndpoint(Resource):
         volumeto = float(request.args.get("volumeto"))
         eth = Ethereum(
             time=time,
-            open=_open,
+            priceopen=priceopen,
             close=close,
             high=high,
             low=low,
@@ -65,7 +65,7 @@ class AddEthereumEndpoint(Resource):
 class AddDogecoinEndpoint(Resource):
     def post(self) -> Response:
         args = req_parse.parse_args()
-        _open = float(request.args.get("open"))
+        priceopen = float(request.args.get("open"))
         close = float(request.args.get("close"))
         high = float(request.args.get("high"))
         low = float(request.args.get("low"))
@@ -74,7 +74,7 @@ class AddDogecoinEndpoint(Resource):
         volumeto = float(request.args.get("volumeto"))
         doge = Dogecoin(
             time=time,
-            open=_open,
+            priceopen=priceopen,
             close=close,
             high=high,
             low=low,
