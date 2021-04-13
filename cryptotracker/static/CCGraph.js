@@ -210,7 +210,7 @@ class ChartBuilder {
 }
 
 cb = new ChartBuilder(INTERVAL)
-cb.fetchData(urlAPI).then(res => {
+cb.fetchData(url).then(res => {
   console.log(data)
   let spinner = document.getElementById("bit-div")
   spinner.innerHTML = `<canvas class="bitcnv" id="chart" width=100% height=60%></canvas>`
