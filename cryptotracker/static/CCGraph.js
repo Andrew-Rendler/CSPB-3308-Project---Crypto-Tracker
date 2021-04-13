@@ -79,14 +79,14 @@ class ChartBuilder {
     let priceLow = 0;
     let priceHigh = 0;
     let date = 0;
-    let price = obj['Data']['Data'][INTERVAL]['close'];
-    let yesterday = obj['Data']['Data'][INTERVAL - 1]['close'];
+    let price = obj[INTERVAL]['close'];
+    let yesterday = obj[INTERVAL - 1]['close'];
     let change = this.percentChange(price, yesterday);
     let dchange = this.dollarChange(price, yesterday);
     let mcap = this.marketCap(price);
 
     for (let j = this.interval; j > this.interval - 30; j--) {
-      let tempVol = obj['Data']['Data'][j]['volumeto']
+      let tempVol = obj[j]['volumeto']
       avgVol = avgVol + tempVol
     }
 
@@ -94,7 +94,7 @@ class ChartBuilder {
 
 
     for (let j = INTERVAL; j > INTERVAL - 7; j--) {
-      let tempPrice = obj['Data']['Data'][j]['close'];
+      let tempPrice = obj[j]['close'];
       avgPrice = avgPrice + tempPrice
     }
 
@@ -121,11 +121,11 @@ class ChartBuilder {
     this.addHtml(".avgPrice", avgPriceInner)
 
     for (var i = 0; i <= this.interval; i++) {
-      priceOpen = (obj['Data']['Data'][i]['open']);
-      priceClose = (obj['Data']['Data'][i]['close']);
-      priceLow = (obj['Data']['Data'][i]['low']);
-      priceHigh = (obj['Data']['Data'][i]['high']);
-      date = ((obj['Data']['Data'][i]['time'] + 86400) * 1000)
+      priceOpen = (obj[i]['open']);
+      priceClose = (obj[i]['close']);
+      priceLow = (obj[i]['low']);
+      priceHigh = (obj[i]['high']);
+      date = ((obj[i]['time'] + 86400) * 1000)
       if (i == this.interval) {
         date = Date.now()
       }
@@ -211,7 +211,6 @@ class ChartBuilder {
 
 cb = new ChartBuilder(INTERVAL)
 cb.fetchData(url).then(res => {
-  console.log(res)
   let spinner = document.getElementById("bit-div")
   spinner.innerHTML = `<canvas class="bitcnv" id="chart" width=100% height=60%></canvas>`
   cb.ctx = document.getElementById('chart').getContext('2d')
