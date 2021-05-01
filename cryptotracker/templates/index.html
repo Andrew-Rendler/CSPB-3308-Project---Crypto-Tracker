@@ -37,7 +37,8 @@
           </a>
         </li>
         <li class="menu-item">
-          <a class="active menu-button dark-text" id="dogebtn" href="#body" onclick="displayDoge()">Dogecoin
+          <a class="active menu-button dark-text" id="dogebtn" href="#body" onclick="displayDoge()">
+            Dogecoin
           </a>
         </li>
         <li class="menu-item">
@@ -45,6 +46,30 @@
             Ethereum
           </a>
         </li>
+        {% if not logged_in: %}
+        <li id="login" class="menu-item">
+          <a class="active menu-button dark-text" id="loginbtn" href="{{ url_for('login') }}">
+            Log In
+          </a>
+        </li>
+        <li id="signup" class="menu-item">
+          <a class="active menu-button dark-text" id="signupbtn" href="{{ url_for('signup') }}">
+            Sign Up
+          </a>
+        </li>
+        {% endif %}
+        {% if logged_in %}
+        <li id="login" class="menu-item">
+          <a class="active menu-button dark-text" id="logout" href="{{ url_for('logout') }}">
+            Log Out
+          </a>
+        </li>
+        <li id="signup" class="menu-item">
+          <a class="active menu-button dark-text" id="portfolio" href="{{ url_for('portfolio') }}">
+            Portfolio
+          </a>
+        </li>
+        {% endif %}
       </ul>
     </div>
     <div class="row menu2">
