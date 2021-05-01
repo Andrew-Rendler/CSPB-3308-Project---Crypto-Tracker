@@ -92,7 +92,7 @@ def create_app(test_config=None):
             self.doges,
         )
 
-    db.create_all()
+    ####db.create_all()
 
     # a simple page that says hello
     @app.route("/hello")
