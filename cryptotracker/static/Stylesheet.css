@@ -144,3 +144,14 @@ h2 {
   justify-content: center;
   align-items: center;
 }
+
+.row-user{
+  text-align:center;
+  font-family: Quicksand;
+}
+.login-heading{
+  font-family: Roboto;
+}
+#login, #signup{
+  float:right;
+}
