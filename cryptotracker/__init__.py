@@ -83,14 +83,14 @@ def create_app(test_config=None):
         ethers = db.Column(db.Float)
         doges = db.Column(db.Float)
 
-    def __repr__(self):
-        return "<User %r %r %r %r %r>" % (
-            self.id,
-            self.username,
-            self.bits,
-            self.ethers,
-            self.doges,
-        )
+        def __repr__(self):
+            return "<User %r %r %r %r %r>" % (
+                self.id,
+                self.username,
+                self.bits,
+                self.ethers,
+                self.doges,
+            )
 
     ####db.create_all()
 
