@@ -75,13 +75,13 @@ def create_app(test_config=None):
         return User.query.get(int(user_id))
 
     class User(UserMixin, db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100))
-    username = db.Column(db.String(100))
-    password = db.Column(db.String(100))
-    bits = db.Column(db.Float)
-    ethers = db.Column(db.Float)
-    doges = db.Column(db.Float)
+        id = db.Column(db.Integer, primary_key=True)
+        name = db.Column(db.String(100))
+        username = db.Column(db.String(100))
+        password = db.Column(db.String(100))
+        bits = db.Column(db.Float)
+        ethers = db.Column(db.Float)
+        doges = db.Column(db.Float)
 
     def __repr__(self):
         return "<User %r %r %r %r %r>" % (
