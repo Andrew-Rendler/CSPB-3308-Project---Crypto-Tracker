@@ -183,7 +183,7 @@ def create_app(test_config=None):
         bitcoin = {"coin": "BTC", "currency": "USD"}
         dogecoin = {"coin": "DOGE", "currency": "USD"}
         eth = {"coin": "ETH", "currency": "USD"}
-        print("json: ", cc_api.api_call("current", bitcoin).json())
+        # print("json: ", cc_api.api_call("current", bitcoin).json())
         portfolio = current_user.bits * 6000
         portfolio += current_user.doges * 1
         portfolio += current_user.ethers * 3
