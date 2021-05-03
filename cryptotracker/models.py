@@ -153,6 +153,7 @@ class Dogecoin(db.Model):
 
 @dataclass
 class User(UserMixin, db.Model):
+    __tablename__ = "user"
     id: int
     name: str
     username: str
