@@ -1,5 +1,8 @@
 from flask_sqlalchemy import SQLAlchemy
 from dataclasses import dataclass
+from flask_login import (
+    UserMixin,
+)
 
 db = SQLAlchemy()
 
@@ -145,4 +148,33 @@ class Dogecoin(db.Model):
             self.high,
             self.low,
             self.time,
+        )
+
+
+@dataclass
+class User(UserMixin, db.Model):
+    __tablename__ = "user"
+    id: int
+    name: str
+    username: str
+    password: str
+    bits: float
+    ethers: float
+    doges: float
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100))
+    username = db.Column(db.String(100))
+    password = db.Column(db.String(100))
+    bits = db.Column(db.Float)
+    ethers = db.Column(db.Float)
+    doges = db.Column(db.Float)
+
+    def __repr__(self):
+        return "<User %r %r %r %r %r>" % (
+            self.id,
+            self.username,
+            self.bits,
+            self.ethers,
+            self.doges,
         )
