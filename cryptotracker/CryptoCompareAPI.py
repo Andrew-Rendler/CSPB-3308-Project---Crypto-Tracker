@@ -117,7 +117,5 @@ class CryptoCompareAPI(object):
         Takes in the endpoint string and kwargs if any. Returns a Response from the api
         """
         url = self.__url_builder(endpoint, **kwargs)
-        print("url: ", url)
         res = get(url)
-        print(res.json())
         return res
