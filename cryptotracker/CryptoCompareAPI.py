@@ -62,13 +62,13 @@ class CryptoCompareAPI(object):
         Returns the endpoint string if found.
         """
 
-        print(tokens)
         try:
             dictionary[tokens[0]]
         except KeyError:
             return 400, idx - 1
 
         if len(tokens) == 1:
+            print("in here")
             return dictionary[tokens[0]], idx
 
         val = dictionary[tokens[0]]
