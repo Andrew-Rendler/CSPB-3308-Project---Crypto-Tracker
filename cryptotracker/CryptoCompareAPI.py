@@ -94,6 +94,7 @@ class CryptoCompareAPI(object):
             self.__abort_malformed_string(
                 "Malformed String: {} -> {}", endpoint, tokens[idx - 1]
             )
+        return result
 
     def __url_builder(self, endpoint: str, **kwargs: dict) -> str:
         """
