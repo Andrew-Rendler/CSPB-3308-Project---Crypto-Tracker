@@ -80,6 +80,7 @@ class CryptoCompareAPI(object):
         """
 
         tokens = endpoint.split("+")
+        print(tokens)
         result, idx = self.__dfs_dict(tokens, CRYPTOCOMPARE_ENDPOINTS, len(tokens))
         if result == 400:
             self.__abort_malformed_string(
