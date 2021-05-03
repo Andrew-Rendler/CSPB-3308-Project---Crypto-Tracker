@@ -82,7 +82,6 @@ class CryptoCompareAPI(object):
 
         tokens = endpoint.split("+")
         result, idx = self.__dfs_dict(tokens, CRYPTOCOMPARE_ENDPOINTS, len(tokens))
-        print(result, idx)
         if result == 400:
             self.__abort_malformed_string(
                 "Malformed String: {} -> {}", endpoint, tokens[idx - 1]
@@ -102,7 +101,6 @@ class CryptoCompareAPI(object):
         """
 
         endpoint = self.__clean_endpoints_string(endpoint)
-        print(endpoint)
         if kwargs != {}:
             endpoint = endpoint.format(**kwargs)
         elif type(endpoint) == tuple:
@@ -119,5 +117,6 @@ class CryptoCompareAPI(object):
         Takes in the endpoint string and kwargs if any. Returns a Response from the api
         """
         url = self.__url_builder(endpoint, **kwargs)
+        print("url: ", url)
         res = get(url)
         return res
