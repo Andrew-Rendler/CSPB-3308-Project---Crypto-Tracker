@@ -103,6 +103,7 @@ class CryptoCompareAPI(object):
         """
 
         endpoint = self.__clean_endpoints_string(endpoint)
+        print(endpoint)
         if kwargs != {}:
             endpoint = endpoint.format(**kwargs)
         elif type(endpoint) == tuple:
