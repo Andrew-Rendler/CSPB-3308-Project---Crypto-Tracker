@@ -89,7 +89,7 @@ class CryptoCompareAPI(object):
                 "Malformed String: {} -> {}", endpoint, tokens[idx - 1]
             )
         try:
-            return result[0]
+            return resultå
         except KeyError:
             self.__abort_malformed_string(
                 "Malformed String: {} -> {}", endpoint, tokens[idx - 1]
@@ -102,7 +102,7 @@ class CryptoCompareAPI(object):
         """
 
         endpoint = self.__clean_endpoints_string(endpoint)
-        if kwargs != {}:
+        if kwargs != {} and type(endpoint) != tuple:
             endpoint = endpoint.format(**kwargs)
         elif type(endpoint) == tuple:
             endpoint = endpoint[0]
