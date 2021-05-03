@@ -13,6 +13,7 @@ req_parse = reqparse.RequestParser()
 class AddBitcoinEndpoint(Resource):
     def post(self) -> Response:
         args = req_parse.parse_args()
+        print(args)
         priceopen = float(request.args.get("open"))
         close = float(request.args.get("close"))
         high = float(request.args.get("high"))

@@ -33,7 +33,7 @@ def create_app(test_config=None):
     # UNCOMMENT TO RUN ON SERVER
     app.config[
         "SQLALCHEMY_DATABASE_URI"
-    ] = "postgresql://dev:password@localhost:5432/dev"
+    ] = "postgresql://postgres:password@localhost:5432/crypto"
     app.config["SQLALCHEMY_TRACK+MODIFICATIONS"] = False
     db.init_app(app)
     migrate = Migrate(app, db)
