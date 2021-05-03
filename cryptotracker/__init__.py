@@ -180,9 +180,13 @@ def create_app(test_config=None):
             db.session.commit()
 
         #### NEED TO MULTIPLY BY ACTUAL VALUE OF COINS
-        portfolio = current_user.bits * 60000
-        portfolio += current_user.doges * 0.30
-        portfolio += current_user.ethers * 2000
+        bitcoin = {"coin": "BTC", "currency": "USD"}
+        dogecoin = {"coin": "BTC", "currency": "USD"}
+        eth = {"coin": "BTC", "currency": "USD"}
+        print(cc_api.api_call(bitcoin))
+        portfolio = current_user.bits * cc_api.api_call(bitcoin)
+        portfolio += current_user.doges * cc_api.api_call(dogecoin)
+        portfolio += current_user.ethers * cc_api.api_call(eth)
         portfolio = "{:,.2f}".format(portfolio)
         return render_template("portfolio.html", user=current_user, value=portfolio)
 
