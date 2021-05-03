@@ -119,4 +119,5 @@ class CryptoCompareAPI(object):
         url = self.__url_builder(endpoint, **kwargs)
         print("url: ", url)
         res = get(url)
+        print(res)
         return res
