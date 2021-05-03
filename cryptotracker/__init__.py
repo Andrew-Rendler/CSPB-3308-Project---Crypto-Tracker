@@ -53,7 +53,7 @@ def create_app(test_config=None):
     app.config["SECRET_KEY"] = "14941313be0b30eff24fe4fb35b3b52a180aa46cacb5174b"
     app.config[
         "SQLALCHEMY_DATABASE_URI"
-    ] = "postgresql://dev:password@localhost:5432/dev"
+    ] = "postgresql://dev:password@localhost:5432/crypto"
     app.config["SQLALCHEMY_TRACK+MODIFICATIONS"] = False
     db.init_app(app)
 
