@@ -183,10 +183,10 @@ def create_app(test_config=None):
         bitcoin = {"coin": "BTC", "currency": "USD"}
         dogecoin = {"coin": "BTC", "currency": "USD"}
         eth = {"coin": "BTC", "currency": "USD"}
-        print(cc_api.api_call(bitcoin))
-        portfolio = current_user.bits * cc_api.api_call(bitcoin)
-        portfolio += current_user.doges * cc_api.api_call(dogecoin)
-        portfolio += current_user.ethers * cc_api.api_call(eth)
+        print(cc_api.api_call("current", bitcoin).json())
+        portfolio = current_user.bits * cc_api.api_call("current", bitcoin).json()
+        portfolio += current_user.doges * cc_api.api_call("current", dogecoin)
+        portfolio += current_user.ethers * cc_api.api_call("current", eth)
         portfolio = "{:,.2f}".format(portfolio)
         return render_template("portfolio.html", user=current_user, value=portfolio)
 
