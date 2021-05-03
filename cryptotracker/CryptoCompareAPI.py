@@ -61,6 +61,8 @@ class CryptoCompareAPI(object):
 
         Returns the endpoint string if found.
         """
+
+        print(tokens)
         try:
             dictionary[tokens[0]]
         except KeyError:
@@ -80,7 +82,6 @@ class CryptoCompareAPI(object):
         """
 
         tokens = endpoint.split("+")
-        print(tokens)
         result, idx = self.__dfs_dict(tokens, CRYPTOCOMPARE_ENDPOINTS, len(tokens))
         if result == 400:
             self.__abort_malformed_string(

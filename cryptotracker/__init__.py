@@ -181,8 +181,8 @@ def create_app(test_config=None):
 
         #### NEED TO MULTIPLY BY ACTUAL VALUE OF COINS
         bitcoin = {"coin": "BTC", "currency": "USD"}
-        dogecoin = {"coin": "BTC", "currency": "USD"}
-        eth = {"coin": "BTC", "currency": "USD"}
+        dogecoin = {"coin": "DOGE", "currency": "USD"}
+        eth = {"coin": "ETH", "currency": "USD"}
         print(cc_api.api_call("current", bitcoin).json())
         portfolio = current_user.bits * cc_api.api_call("current", bitcoin).json()
         portfolio += current_user.doges * cc_api.api_call("current", dogecoin)
