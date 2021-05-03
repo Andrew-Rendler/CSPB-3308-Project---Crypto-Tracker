@@ -2,11 +2,6 @@ from flask_sqlalchemy import SQLAlchemy
 from dataclasses import dataclass
 from flask_login import (
     UserMixin,
-    login_user,
-    LoginManager,
-    login_required,
-    current_user,
-    logout_user,
 )
 
 db = SQLAlchemy()
