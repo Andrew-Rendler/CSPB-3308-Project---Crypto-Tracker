@@ -28,7 +28,7 @@ CRYPTOCOMPARE_ENDPOINTS = {
         "feeds_and_articles": URL_FRAGMENT_V2 + "news/feedsandcategories",
     },
     ## TODO: support multi-coin and multi-currency url string
-    "current": {"single_symbol": URL_FRAGMENT + "price?fsym={coin}&tsyms={currency}"},
+    "current": URL_FRAGMENT + "price?fsym={coin}&tsyms={currency}",
     "ratelimit": {"all": "https://min-api.cryptocompare.com/stats/rate/limit?"},
 }
 
@@ -68,6 +68,7 @@ class CryptoCompareAPI(object):
             return 400, idx - 1
 
         if len(tokens) == 1:
+            print(tokens)
             return dictionary[tokens[0]], idx
 
         val = dictionary[tokens[0]]
