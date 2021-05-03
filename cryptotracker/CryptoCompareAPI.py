@@ -89,7 +89,7 @@ class CryptoCompareAPI(object):
                 "Malformed String: {} -> {}", endpoint, tokens[idx - 1]
             )
         try:
-            return resultå
+            return result
         except KeyError:
             self.__abort_malformed_string(
                 "Malformed String: {} -> {}", endpoint, tokens[idx - 1]
