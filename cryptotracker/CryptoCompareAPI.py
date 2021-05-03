@@ -68,7 +68,6 @@ class CryptoCompareAPI(object):
             return 400, idx - 1
 
         if len(tokens) == 1:
-            print(tokens)
             return dictionary[tokens[0]], idx
 
         val = dictionary[tokens[0]]
@@ -83,7 +82,6 @@ class CryptoCompareAPI(object):
 
         tokens = endpoint.split("+")
         result, idx = self.__dfs_dict(tokens, CRYPTOCOMPARE_ENDPOINTS, len(tokens))
-        print("result: ", result)
         if result == 400:
             self.__abort_malformed_string(
                 "Malformed String: {} -> {}", endpoint, tokens[idx - 1]
@@ -123,5 +121,4 @@ class CryptoCompareAPI(object):
         """
         url = self.__url_builder(endpoint, **kwargs)
         res = get(url)
-        print(res.json())
         return res
