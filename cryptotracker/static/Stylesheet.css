@@ -11,6 +11,8 @@ body{
   position: fixed;
   top: 0;
   background-color: #111122;
+  max-width: 1320px;
+  width: 90%;
 }
 
 .theme{
@@ -68,9 +70,30 @@ body{
   margin-top: 10px;
   margin-bottom: 5px;
 }
+.menu-item-right
+{
+  float:right;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-left: 20px;
+  margin-right: 50px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
 
 /*This sets the color and text properties for the items on the menu*/
 .menu-item a
+{
+  display: block;
+  font-family: Quicksand;
+  text-align: center;
+  padding-top: 0px  ;
+  text-decoration: none;
+  font-weight: bold;
+}
+.menu-item-right a
 {
   display: block;
   font-family: Quicksand;
@@ -95,6 +118,10 @@ body{
 }
 /*changes the color when the item is hovered overflow*/
 .menu-item a:hover
+{
+  color: #ff6666 !important;
+}
+.menu-item-right a:hover
 {
   color: #ff6666 !important;
 }
@@ -143,15 +170,4 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.row-user{
-  text-align:center;
-  font-family: Quicksand;
-}
-.login-heading{
-  font-family: Roboto;
-}
-#login, #signup{
-  float:right;
 }
