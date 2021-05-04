@@ -6,7 +6,6 @@
   line-height: 2;
   font-weight: 100;
   color: white;
-
   border-radius: 15px;
   display: inline-block;
   width: 270px;
@@ -28,7 +27,7 @@
   width: 100px;
   height: 30px;
   margin: 5px;
-  margin-left: 5px;
+  margin-left: 0px;
   background-color: white;
   padding: 0px;
 }
