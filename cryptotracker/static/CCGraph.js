@@ -8,9 +8,9 @@ var INTERVAL = 100
 // var urlDoge = URL_FRAGMENT_DOGE + "&api_key=" + API_KEY;
 // var urlEther = URL_FRAGMENT_ETHER + "&api_key=" + API_KEY;
 
-var url = `http://143.198.112.124:5000/get-bitcoin`;
-var urlDoge = `http://143.198.112.124:5000/get-dogecoin`;
-var urlEther = `http://143.198.112.124:5000/get-ethereum`;
+var url = `http://143.198.99.250:5000/get-bitcoin`;
+var urlDoge = `http://143.198.99.250:5000/get-dogecoin`;
+var urlEther = `http://143.198.99.250:5000/get-ethereum`;
 
 var T = 1000000000000;
 var NUM_DOGE = 129090000000

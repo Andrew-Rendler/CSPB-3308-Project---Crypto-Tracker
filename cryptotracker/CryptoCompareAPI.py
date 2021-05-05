@@ -28,7 +28,7 @@ CRYPTOCOMPARE_ENDPOINTS = {
         "feeds_and_articles": URL_FRAGMENT_V2 + "news/feedsandcategories",
     },
     ## TODO: support multi-coin and multi-currency url string
-    "current": {"single_symbol": URL_FRAGMENT + "price?fsym={coin}&tsyms={currency}"},
+    "current": URL_FRAGMENT + "price?fsym={coin}&tsyms={currency}",
     "ratelimit": {"all": "https://min-api.cryptocompare.com/stats/rate/limit?"},
 }
 
@@ -61,6 +61,7 @@ class CryptoCompareAPI(object):
 
         Returns the endpoint string if found.
         """
+
         try:
             dictionary[tokens[0]]
         except KeyError:
@@ -85,6 +86,9 @@ class CryptoCompareAPI(object):
             self.__abort_malformed_string(
                 "Malformed String: {} -> {}", endpoint, tokens[idx - 1]
             )
+
+        if type(result) == str:
+            return result
 
         try:
             return result[0]
